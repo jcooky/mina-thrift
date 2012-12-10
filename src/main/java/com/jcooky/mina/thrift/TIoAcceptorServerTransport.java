@@ -37,6 +37,10 @@ public class TIoAcceptorServerTransport extends TServerTransport {
 		this.acceptor = acceptor;
 	}
 	
+	public IoAcceptor getAcceptor() {
+		return acceptor;
+	}
+	
 	public void setHandler(IoHandler handler) {
 		acceptor.setHandler(handler);
 	}

@@ -4,6 +4,7 @@ import org.apache.mina.core.buffer.IoBuffer;
 import org.apache.mina.core.service.IoHandler;
 import org.apache.mina.core.session.IdleStatus;
 import org.apache.mina.core.session.IoSession;
+import org.apache.mina.core.session.IoSessionConfig;
 import org.apache.thrift.TProcessor;
 import org.apache.thrift.server.TServer;
 import org.apache.thrift.transport.TServerTransport;
@@ -12,13 +13,35 @@ import org.apache.thrift.transport.TTransportException;
 
 public class TMinaServer extends TServer implements IoHandler {
 	public static class Args extends AbstractServerArgs<Args> {
+		int readBufferSize = 2048, writeTimout = 10 * 1000, idleTime = 10;
+		
 		public Args(TServerTransport arg0) {
 			super(arg0);
+		}
+		
+		public Args readBufferSize(int readBufferSize) {
+			this.readBufferSize = readBufferSize;
+			return this;
+		}
+		
+		public Args writeTimout(int writeTimout) {
+			this.writeTimout = writeTimout;
+			return this;
+		}
+		
+		public Args idleTime(int idleTime) {
+			this.idleTime = idleTime;
+			return this;
 		}
 	}
 	
 	protected TMinaServer(Args args) {
 		super(args);
+		
+		IoSessionConfig config = getTransport().getAcceptor().getSessionConfig();
+		config.setReadBufferSize(args.readBufferSize);
+		config.setBothIdleTime(args.idleTime);
+		config.setWriteTimeout(args.writeTimout);
 	}
 
 	public void serve() {

@@ -97,8 +97,14 @@ public class TIoSessionTransport extends TTransport {
 	}
 
 	public void write(byte[] buf, int off, int len) throws TTransportException {
-		logger.info("write called");
-//		writeBuffer.put(buf, off, len);
+		StringBuilder sb = new StringBuilder();
+		sb.append("pos=").append(off).append(" len=").append(len).append(": ");
+		for (int i = off ; i < len ; ++i) {
+			sb.append(buf[i]);
+			if (i != len - 1)
+				sb.append(' ');
+		}
+		logger.info("WriteBuffer[{}]", sb);
 		IoBuffer buffer = IoBuffer.allocate(1024).setAutoExpand(true);
 		buffer.clear();
 		buffer.put(buf, off, len);
