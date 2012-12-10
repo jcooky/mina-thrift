@@ -1,14 +1,15 @@
 package com.jcooky.mina.thrift;
 
 import static org.junit.Assert.assertSame;
+import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.Collections;
 import java.util.List;
 
+import org.apache.thrift.TApplicationException;
 import org.apache.thrift.protocol.TBinaryProtocol;
-import org.apache.thrift.protocol.TCompactProtocol;
 import org.apache.thrift.protocol.TProtocol;
 import org.apache.thrift.server.TServer;
 import org.apache.thrift.test.gen.CourseService;
@@ -36,6 +37,7 @@ public class MinaThriftServerTest {
 		MockitoAnnotations.initMocks(this);
 		
 		when(mockCourseService.getCourseInventory()).thenReturn(Collections.EMPTY_LIST);
+		when(mockCourseService.getCourse(any(String.class))).thenThrow(new TApplicationException("Test"));
 		
 		socket = new TIoAcceptorServerTransport(PORT);
 		CourseService.Processor<?> processor = new CourseService.Processor<CourseService.Iface>(mockCourseService);
@@ -83,5 +85,24 @@ public class MinaThriftServerTest {
 		}
 		
 		verify(mockCourseService).deleteCourse(course);
+	}
+	
+	@Test(expected=TApplicationException.class)
+	public void testThrowable() throws Exception {
+		String course = "Windows_301";
+		
+		//Setup the transport and protocol
+		final TSocket socket = new TSocket("localhost", PORT, SOCKET_TIMEOUT);
+		final TProtocol protocol = new TBinaryProtocol(socket);
+		final CourseService.Client client = new CourseService.Client(protocol);
+	
+		//The transport must be opened before you can begin using
+		socket.open();
+	
+		try {
+			client.getCourse(course);
+		} finally {
+			socket.close();
+		}
 	}
 }
