@@ -1,4 +1,4 @@
-package com.jcooky.mina.thrift;
+package com.github.jcooky.mina.thrift;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;

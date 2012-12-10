@@ -1,4 +1,4 @@
-package com.jcooky.mina.thrift;
+package com.github.jcooky.mina.thrift;
 
 import static org.junit.Assert.assertSame;
 import static org.mockito.Matchers.any;
@@ -22,6 +22,10 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.github.jcooky.mina.thrift.TIoAcceptorServerTransport;
+import com.github.jcooky.mina.thrift.TIoSessionTransport;
+import com.github.jcooky.mina.thrift.TMinaServer;
 
 public class TMinaServerTest {
 	private Logger logger = LoggerFactory.getLogger(getClass());

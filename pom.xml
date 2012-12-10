@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.jcooky.mina.thrift</groupId>
+	<groupId>com.github.jcooky.mina.thrift</groupId>
 	<artifactId>mina-thrift</artifactId>
 	<version>0.0.1</version>
 	<packaging>jar</packaging>
@@ -88,4 +88,12 @@
 			</plugin>
 		</plugins>
 	</build>
+	<url>https://github.com/jcooky/mina-thrift</url>
+	<description>Thrift Processor Using Mina</description>
+	<scm>
+		<url>https://github.com/jcooky/mina-thrift.git</url>
+		<connection>git</connection>
+		<developerConnection>jcooky</developerConnection>
+		<tag>0.0.1</tag>
+	</scm>
 </project>

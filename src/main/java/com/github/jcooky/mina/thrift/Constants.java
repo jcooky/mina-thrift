@@ -1,4 +1,4 @@
-package com.jcooky.mina.thrift;
+package com.github.jcooky.mina.thrift;
 
 import org.apache.mina.core.session.AttributeKey;
 
