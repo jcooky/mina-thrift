@@ -96,4 +96,8 @@
 		<developerConnection>jcooky</developerConnection>
 		<tag>0.0.1</tag>
 	</scm>
+	<issueManagement>
+		<system>github</system>
+		<url>https://github.com/jcooky/karan/issues</url>
+	</issueManagement>
 </project>
