@@ -15,6 +15,7 @@ import org.apache.thrift.server.TServer;
 import org.apache.thrift.test.gen.CourseService;
 import org.apache.thrift.transport.TServerTransport;
 import org.apache.thrift.transport.TSocket;
+import org.apache.thrift.transport.TTransportFactory;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -22,10 +23,6 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.github.jcooky.mina.thrift.TIoAcceptorServerTransport;
-import com.github.jcooky.mina.thrift.TIoSessionTransport;
-import com.github.jcooky.mina.thrift.TMinaServer;
 
 public class TMinaServerTest {
 	private Logger logger = LoggerFactory.getLogger(getClass());
@@ -48,8 +45,8 @@ public class TMinaServerTest {
 		server = new TMinaServer(new TMinaServer.Args(socket)
 												.processor(processor)
 												.protocolFactory(new TBinaryProtocol.Factory())
-												.inputTransportFactory(TIoSessionTransport.inputFactory())
-												.outputTransportFactory(TIoSessionTransport.outputFactory()));
+												.inputTransportFactory(new TIoSessionTransport.InputTransportFactory())
+												.outputTransportFactory(new TTransportFactory()));
 
 		new Thread() {
 			public void run() {

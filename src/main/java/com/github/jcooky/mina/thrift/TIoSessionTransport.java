@@ -58,14 +58,6 @@ public class TIoSessionTransport extends TTransport {
 		
 	}
 	
-	public static TTransportFactory inputFactory() {
-		return new InputTransportFactory();
-	}
-	
-	public static TTransportFactory outputFactory() {
-		return new TTransportFactory();
-	}
-	
 	public TIoSessionTransport(IoSession session) {
 		this.session = session;
 	}

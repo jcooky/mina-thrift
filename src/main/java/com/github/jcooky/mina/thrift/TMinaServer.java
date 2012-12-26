@@ -37,7 +37,7 @@ public class TMinaServer extends TServer {
 
 	private TMinaThriftHandler handler;
 
-	protected TMinaServer(Args args) {
+	public TMinaServer(Args args) {
 		super(args);
 
 		IoSessionConfig config = getTransport().getAcceptor().getSessionConfig();
