@@ -6,11 +6,6 @@
 	<artifactId>mina-thrift</artifactId>
 	<version>0.0.1</version>
 	<packaging>jar</packaging>
-	<parent>
-		<groupId>org.sonatype.oss</groupId>
-		<artifactId>oss-parent</artifactId>
-		<version>7</version>
-	</parent>
 
 	<name>mina-thrift</name>
 
@@ -51,7 +46,13 @@
 		</dependency>
 	</dependencies>
 
-
+	<distributionManagement>
+		<repository>
+			<id>jcooky.repo</id>
+			<name>JCooky Internal Repository</name>
+			<url>http://misoteam.iptime.org:9090/content/repositories/releases</url>
+		</repository>
+	</distributionManagement>
 
 	<build>
 		<plugins>

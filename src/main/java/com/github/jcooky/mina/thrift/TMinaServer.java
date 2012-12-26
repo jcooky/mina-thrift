@@ -63,4 +63,10 @@ public class TMinaServer extends TServer {
 		return (TIoAcceptorServerTransport) super.serverTransport_;
 	}
 
+	@Override
+	public void stop() {
+		super.stop();
+		getTransport().close();
+	}
+
 }
