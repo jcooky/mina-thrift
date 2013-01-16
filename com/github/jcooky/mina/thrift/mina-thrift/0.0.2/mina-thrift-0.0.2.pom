@@ -127,7 +127,7 @@
 		<url>https://github.com/jcooky/mina-thrift.git</url>
 		<connection>scm:git:git://github.com/jcooky/mina-thrift.git</connection>
 		<developerConnection>scm:git:git@github.com:jcooky/mina-thrift.git</developerConnection>
-		<tag>0.0.1</tag>
+		<tag>0.0.2</tag>
 	</scm>
 	<issueManagement>
 		<system>github</system>
