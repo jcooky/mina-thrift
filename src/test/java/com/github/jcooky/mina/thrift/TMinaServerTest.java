@@ -1,13 +1,5 @@
 package com.github.jcooky.mina.thrift;
 
-import static org.junit.Assert.assertSame;
-import static org.mockito.Matchers.any;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-
-import java.util.Collections;
-import java.util.List;
-
 import org.apache.thrift.TApplicationException;
 import org.apache.thrift.protocol.TBinaryProtocol;
 import org.apache.thrift.protocol.TProtocol;
@@ -23,6 +15,14 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.Collections;
+import java.util.List;
+
+import static org.junit.Assert.assertSame;
+import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 public class TMinaServerTest {
 	private Logger logger = LoggerFactory.getLogger(getClass());
@@ -48,11 +48,12 @@ public class TMinaServerTest {
 												.inputTransportFactory(new TIoSessionTransport.InputTransportFactory())
 												.outputTransportFactory(new TTransportFactory()));
 
-		new Thread() {
-			public void run() {
+//		new Thread() {
+//			public void run() {
 				server.serve();
-			}
-		}.start();
+//			}
+//		}.start();
+        ((TMinaServer)server).join();
 		Thread.sleep(100);
 	}
 	

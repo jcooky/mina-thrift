@@ -1,14 +1,8 @@
 package com.github.jcooky.mina.thrift;
 
-import org.apache.mina.core.buffer.IoBuffer;
-import org.apache.mina.core.service.IoHandler;
-import org.apache.mina.core.session.IdleStatus;
-import org.apache.mina.core.session.IoSession;
 import org.apache.mina.core.session.IoSessionConfig;
-import org.apache.thrift.TProcessor;
 import org.apache.thrift.server.TServer;
 import org.apache.thrift.transport.TServerTransport;
-import org.apache.thrift.transport.TTransport;
 import org.apache.thrift.transport.TTransportException;
 
 public class TMinaServer extends TServer {
@@ -62,6 +56,10 @@ public class TMinaServer extends TServer {
 	private TIoAcceptorServerTransport getTransport() {
 		return (TIoAcceptorServerTransport) super.serverTransport_;
 	}
+
+    public void join() throws InterruptedException {
+        getTransport().join();
+    }
 
 	@Override
 	public void stop() {

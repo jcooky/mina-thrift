@@ -1,24 +1,20 @@
 package com.github.jcooky.mina.thrift;
 
-import java.io.IOException;
-import java.net.InetSocketAddress;
-import java.nio.channels.Selector;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.LinkedBlockingQueue;
-
-import org.apache.mina.core.buffer.IoBuffer;
 import org.apache.mina.core.service.IoAcceptor;
 import org.apache.mina.core.service.IoHandler;
+import org.apache.mina.core.service.IoService;
+import org.apache.mina.core.service.IoServiceListener;
 import org.apache.mina.core.session.IdleStatus;
 import org.apache.mina.core.session.IoSession;
 import org.apache.mina.filter.logging.LoggingFilter;
 import org.apache.mina.transport.socket.nio.NioSocketAcceptor;
-import org.apache.thrift.TProcessor;
 import org.apache.thrift.transport.TServerTransport;
-import org.apache.thrift.transport.TTransport;
 import org.apache.thrift.transport.TTransportException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.io.IOException;
+import java.net.InetSocketAddress;
 
 public class TIoAcceptorServerTransport extends TServerTransport {
 	private static final Logger logger = LoggerFactory.getLogger(TIoAcceptorServerTransport.class);
@@ -59,6 +55,36 @@ public class TIoAcceptorServerTransport extends TServerTransport {
 			acceptor.dispose(true);
 		}
 	}
+
+    public void join() throws InterruptedException {
+        acceptor.wait();
+        acceptor.addListener(new IoServiceListener() {
+            @Override
+            public void serviceActivated(IoService service) throws Exception {
+                //To change body of implemented methods use File | Settings | File Templates.
+            }
+
+            @Override
+            public void serviceIdle(IoService service, IdleStatus idleStatus) throws Exception {
+                //To change body of implemented methods use File | Settings | File Templates.
+            }
+
+            @Override
+            public void serviceDeactivated(IoService service) throws Exception {
+
+            }
+
+            @Override
+            public void sessionCreated(IoSession session) throws Exception {
+                //To change body of implemented methods use File | Settings | File Templates.
+            }
+
+            @Override
+            public void sessionDestroyed(IoSession session) throws Exception {
+                //To change body of implemented methods use File | Settings | File Templates.
+            }
+        });
+    }
 
 	protected TIoSessionTransport acceptImpl() throws TTransportException {
 		throw new UnsupportedOperationException();
