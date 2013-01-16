@@ -56,36 +56,6 @@ public class TIoAcceptorServerTransport extends TServerTransport {
 		}
 	}
 
-    public void join() throws InterruptedException {
-        acceptor.wait();
-        acceptor.addListener(new IoServiceListener() {
-            @Override
-            public void serviceActivated(IoService service) throws Exception {
-                //To change body of implemented methods use File | Settings | File Templates.
-            }
-
-            @Override
-            public void serviceIdle(IoService service, IdleStatus idleStatus) throws Exception {
-                //To change body of implemented methods use File | Settings | File Templates.
-            }
-
-            @Override
-            public void serviceDeactivated(IoService service) throws Exception {
-
-            }
-
-            @Override
-            public void sessionCreated(IoSession session) throws Exception {
-                //To change body of implemented methods use File | Settings | File Templates.
-            }
-
-            @Override
-            public void sessionDestroyed(IoSession session) throws Exception {
-                //To change body of implemented methods use File | Settings | File Templates.
-            }
-        });
-    }
-
 	protected TIoSessionTransport acceptImpl() throws TTransportException {
 		throw new UnsupportedOperationException();
 	}

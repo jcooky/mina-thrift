@@ -1,9 +1,12 @@
 package com.github.jcooky.mina.thrift;
 
 import org.apache.mina.core.session.IoSessionConfig;
+import org.apache.thrift.TProcessor;
+import org.apache.thrift.protocol.TBinaryProtocol;
 import org.apache.thrift.server.TServer;
 import org.apache.thrift.transport.TServerTransport;
 import org.apache.thrift.transport.TTransportException;
+import org.apache.thrift.transport.TTransportFactory;
 
 public class TMinaServer extends TServer {
 	public static class Args extends AbstractServerArgs<Args> {
@@ -57,14 +60,18 @@ public class TMinaServer extends TServer {
 		return (TIoAcceptorServerTransport) super.serverTransport_;
 	}
 
-    public void join() throws InterruptedException {
-        getTransport().join();
-    }
-
 	@Override
 	public void stop() {
 		super.stop();
 		getTransport().close();
 	}
 
+    public static TMinaServer getServer(int port, TProcessor processor) {
+        TIoAcceptorServerTransport socket = new TIoAcceptorServerTransport(port);
+        return new TMinaServer(new TMinaServer.Args(socket)
+                .processor(processor)
+                .protocolFactory(new TBinaryProtocol.Factory())
+                .inputTransportFactory(new TIoSessionTransport.InputTransportFactory())
+                .outputTransportFactory(new TTransportFactory()));
+    }
 }

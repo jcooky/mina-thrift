@@ -53,7 +53,6 @@ public class TMinaServerTest {
 				server.serve();
 //			}
 //		}.start();
-        ((TMinaServer)server).join();
 		Thread.sleep(100);
 	}
 	

@@ -43,7 +43,7 @@ public class TIoSessionTransport extends TTransport {
 						if (i != len - 1)
 							sb.append(' ');
 					}
-					logger.info("ReadBuffer[{}]", sb);
+					logger.debug("ReadBuffer[{}]", sb);
 					
 					return readLen;
 				}
@@ -96,7 +96,7 @@ public class TIoSessionTransport extends TTransport {
 			if (i != len - 1)
 				sb.append(' ');
 		}
-		logger.info("WriteBuffer[{}]", sb);
+		logger.debug("WriteBuffer[{}]", sb);
 		IoBuffer buffer = IoBuffer.allocate(1024).setAutoExpand(true);
 		buffer.clear();
 		buffer.put(buf, off, len);
