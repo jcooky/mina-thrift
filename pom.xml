@@ -13,7 +13,17 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.build.source>1.6</project.build.source>
 		<project.build.target>1.6</project.build.target>
+        <!-- github server corresponds to entry in ~/.m2/settings.xml -->
+        <github.global.server>github</github.global.server>
 	</properties>
+
+    <distributionManagement>
+        <repository>
+            <id>internal.repo</id>
+            <name>Temporary Staging Repository</name>
+            <url>file://${project.build.directory}/mvn-repo</url>
+        </repository>
+    </distributionManagement>
 
 	<dependencies>
 		<dependency>
@@ -46,13 +56,7 @@
 		</dependency>
 	</dependencies>
 
-	<distributionManagement>
-		<repository>
-			<id>jcooky.repo</id>
-			<name>JCooky Internal Repository</name>
-			<url>http://misoteam.iptime.org:9090/content/repositories/releases</url>
-		</repository>
-	</distributionManagement>
+
 
 	<build>
 		<plugins>
@@ -92,18 +96,41 @@
 					</arguments>
 				</configuration>
 			</plugin>
+            <plugin>
+                <groupId>com.github.github</groupId>
+                <artifactId>site-maven-plugin</artifactId>
+                <version>0.7</version>
+                <configuration>
+                    <message>Maven artifacts for ${project.version}</message>  <!-- git commit message -->
+                    <noJekyll>true</noJekyll>                                  <!-- disable webpage processing -->
+                    <outputDirectory>${project.build.directory}/mvn-repo</outputDirectory> <!-- matches distribution management repository url above -->
+                    <branch>refs/heads/mvn-repo</branch>                       <!-- remote branch name -->
+                    <includes><include>**/*</include></includes>
+                    <repositoryName>mina-thrift</repositoryName>      <!-- github repo name -->
+                    <repositoryOwner>jcooky</repositoryOwner>    <!-- github username  -->
+                </configuration>
+                <executions>
+                    <!-- run site-maven-plugin's 'site' target as part of the build's normal 'deploy' phase -->
+                    <execution>
+                        <goals>
+                            <goal>site</goal>
+                        </goals>
+                        <phase>deploy</phase>
+                    </execution>
+                </executions>
+            </plugin>
 		</plugins>
 	</build>
-	<url>https://github.com/jcooky/mina-thrift</url>
+	<url>http://jcooky.github.com/mina-thrift</url>
 	<description>Thrift Processor Using Mina</description>
 	<scm>
 		<url>https://github.com/jcooky/mina-thrift.git</url>
 		<connection>scm:git:git://github.com/jcooky/mina-thrift.git</connection>
-		<developerConnection>scm:git:https://github.com/jcooky/mina-thrift.git</developerConnection>
-		<tag>0.0.1</tag>
+		<developerConnection>scm:git:git@github.com:jcooky/mina-thrift.git</developerConnection>
+		<tag>0.0.2</tag>
 	</scm>
 	<issueManagement>
 		<system>github</system>
-		<url>https://github.com/jcooky/karan/issues</url>
+		<url>https://github.com/jcooky/mina-thrift/issues</url>
 	</issueManagement>
 </project>
