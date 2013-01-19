@@ -10,8 +10,11 @@ import org.apache.thrift.protocol.TProtocolFactory;
 import org.apache.thrift.transport.TTransport;
 import org.apache.thrift.transport.TTransportException;
 import org.apache.thrift.transport.TTransportFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class TMinaThriftHandler extends IoHandlerAdapter {
+    private static final Logger logger = LoggerFactory.getLogger(TMinaThriftHandler.class);
 	private TProcessorFactory processorFactory;
 	private TTransportFactory inputTransportFactory, outputTransportFactory;
 	private TProtocolFactory inputProtocolFactory, outputProtocolFactory;
@@ -45,7 +48,6 @@ public class TMinaThriftHandler extends IoHandlerAdapter {
 	}
 
 	public void exceptionCaught(IoSession session, Throwable cause) throws Exception {
-		cause.printStackTrace();
 	}
 
 	public void messageReceived(IoSession session, Object message) throws Exception {
