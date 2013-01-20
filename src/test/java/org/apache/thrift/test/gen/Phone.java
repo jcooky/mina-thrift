@@ -160,6 +160,7 @@ public class Phone implements org.apache.thrift.TBase<Phone, Phone._Fields>, jav
     return new Phone(this);
   }
 
+  @Override
   public void clear() {
     setIdIsSet(false);
     this.id = 0;
@@ -437,7 +438,7 @@ public class Phone implements org.apache.thrift.TBase<Phone, Phone._Fields>, jav
     try {
       write(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(out)));
     } catch (org.apache.thrift.TException te) {
-      throw new java.io.IOException(te.getMessage());
+      throw new java.io.IOException(te);
     }
   }
 
@@ -447,7 +448,7 @@ public class Phone implements org.apache.thrift.TBase<Phone, Phone._Fields>, jav
       __isset_bitfield = 0;
       read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
     } catch (org.apache.thrift.TException te) {
-      throw new java.io.IOException(te.getMessage());
+      throw new java.io.IOException(te);
     }
   }
 

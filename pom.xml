@@ -65,7 +65,13 @@
             <version>1.5.8</version>
             <scope>test</scope>
         </dependency>
-	</dependencies>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.4</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
 
 
@@ -92,33 +98,36 @@
                     </execution>
                 </executions>
             </plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>exec-maven-plugin</artifactId>
-				<version>1.2.1</version>
-				<executions>
-					<execution>
-						<id>exec</id>
-						<phase>resources</phase>
-						<goals>
-							<goal>thrift</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<executable>thrift</executable>
-					<!-- optional -->
-					<workingDirectory>${basedir}</workingDirectory>
-					<arguments>
-						<argument>-debug</argument>
-						<argument>-out</argument>
-						<argument>src/test/java</argument>
-						<argument>--gen</argument>
-						<argument>java:java5</argument>
-						<argument>src/test/thrift/course.thrift</argument>
-					</arguments>
-				</configuration>
-			</plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.7</version>
+                <executions>
+                    <execution>
+                        <id>thrift-generate-sources</id>
+                        <phase>generate-test-sources</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <target>
+                                <apply executable="thrift" dir="${basedir}">
+                                    <arg value="-debug" />
+                                    <arg value="-out" />
+                                    <arg value="src/test/java" />
+                                    <arg value="--gen" />
+                                    <arg value="java" />
+                                    <fileset dir="${basedir}/src/test/thrift"
+                                             casesensitive="yes">
+                                        <include name="**/*.thrift" />
+                                    </fileset>
+                                </apply>
+                            </target>
+
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>com.github.github</groupId>
                 <artifactId>site-maven-plugin</artifactId>

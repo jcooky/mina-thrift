@@ -30,22 +30,22 @@ import java.util.Arrays;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class UnacceptableCourse extends TException implements org.apache.thrift.TBase<UnacceptableCourse, UnacceptableCourse._Fields>, java.io.Serializable, Cloneable {
-  private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("UnacceptableCourse");
+public class InvalidExcuteException extends TException implements org.apache.thrift.TBase<InvalidExcuteException, InvalidExcuteException._Fields>, java.io.Serializable, Cloneable {
+  private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("InvalidExcuteException");
 
-  private static final org.apache.thrift.protocol.TField MESSAGE_FIELD_DESC = new org.apache.thrift.protocol.TField("message", org.apache.thrift.protocol.TType.STRING, (short)1);
+  private static final org.apache.thrift.protocol.TField WHY_FIELD_DESC = new org.apache.thrift.protocol.TField("why", org.apache.thrift.protocol.TType.STRING, (short)1);
 
   private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
   static {
-    schemes.put(StandardScheme.class, new UnacceptableCourseStandardSchemeFactory());
-    schemes.put(TupleScheme.class, new UnacceptableCourseTupleSchemeFactory());
+    schemes.put(StandardScheme.class, new InvalidExcuteExceptionStandardSchemeFactory());
+    schemes.put(TupleScheme.class, new InvalidExcuteExceptionTupleSchemeFactory());
   }
 
-  public String message; // required
+  public String why; // required
 
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
   public enum _Fields implements org.apache.thrift.TFieldIdEnum {
-    MESSAGE((short)1, "message");
+    WHY((short)1, "why");
 
     private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
 
@@ -60,8 +60,8 @@ public class UnacceptableCourse extends TException implements org.apache.thrift.
      */
     public static _Fields findByThriftId(int fieldId) {
       switch(fieldId) {
-        case 1: // MESSAGE
-          return MESSAGE;
+        case 1: // WHY
+          return WHY;
         default:
           return null;
       }
@@ -105,71 +105,71 @@ public class UnacceptableCourse extends TException implements org.apache.thrift.
   public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
   static {
     Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
-    tmpMap.put(_Fields.MESSAGE, new org.apache.thrift.meta_data.FieldMetaData("message", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+    tmpMap.put(_Fields.WHY, new org.apache.thrift.meta_data.FieldMetaData("why", org.apache.thrift.TFieldRequirementType.DEFAULT, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
     metaDataMap = Collections.unmodifiableMap(tmpMap);
-    org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(UnacceptableCourse.class, metaDataMap);
+    org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(InvalidExcuteException.class, metaDataMap);
   }
 
-  public UnacceptableCourse() {
+  public InvalidExcuteException() {
   }
 
-  public UnacceptableCourse(
-    String message)
+  public InvalidExcuteException(
+    String why)
   {
     this();
-    this.message = message;
+    this.why = why;
   }
 
   /**
    * Performs a deep copy on <i>other</i>.
    */
-  public UnacceptableCourse(UnacceptableCourse other) {
-    if (other.isSetMessage()) {
-      this.message = other.message;
+  public InvalidExcuteException(InvalidExcuteException other) {
+    if (other.isSetWhy()) {
+      this.why = other.why;
     }
   }
 
-  public UnacceptableCourse deepCopy() {
-    return new UnacceptableCourse(this);
+  public InvalidExcuteException deepCopy() {
+    return new InvalidExcuteException(this);
   }
 
   @Override
   public void clear() {
-    this.message = null;
+    this.why = null;
   }
 
-  public String getMessage() {
-    return this.message;
+  public String getWhy() {
+    return this.why;
   }
 
-  public UnacceptableCourse setMessage(String message) {
-    this.message = message;
+  public InvalidExcuteException setWhy(String why) {
+    this.why = why;
     return this;
   }
 
-  public void unsetMessage() {
-    this.message = null;
+  public void unsetWhy() {
+    this.why = null;
   }
 
-  /** Returns true if field message is set (has been assigned a value) and false otherwise */
-  public boolean isSetMessage() {
-    return this.message != null;
+  /** Returns true if field why is set (has been assigned a value) and false otherwise */
+  public boolean isSetWhy() {
+    return this.why != null;
   }
 
-  public void setMessageIsSet(boolean value) {
+  public void setWhyIsSet(boolean value) {
     if (!value) {
-      this.message = null;
+      this.why = null;
     }
   }
 
   public void setFieldValue(_Fields field, Object value) {
     switch (field) {
-    case MESSAGE:
+    case WHY:
       if (value == null) {
-        unsetMessage();
+        unsetWhy();
       } else {
-        setMessage((String)value);
+        setWhy((String)value);
       }
       break;
 
@@ -178,8 +178,8 @@ public class UnacceptableCourse extends TException implements org.apache.thrift.
 
   public Object getFieldValue(_Fields field) {
     switch (field) {
-    case MESSAGE:
-      return getMessage();
+    case WHY:
+      return getWhy();
 
     }
     throw new IllegalStateException();
@@ -192,8 +192,8 @@ public class UnacceptableCourse extends TException implements org.apache.thrift.
     }
 
     switch (field) {
-    case MESSAGE:
-      return isSetMessage();
+    case WHY:
+      return isSetWhy();
     }
     throw new IllegalStateException();
   }
@@ -202,21 +202,21 @@ public class UnacceptableCourse extends TException implements org.apache.thrift.
   public boolean equals(Object that) {
     if (that == null)
       return false;
-    if (that instanceof UnacceptableCourse)
-      return this.equals((UnacceptableCourse)that);
+    if (that instanceof InvalidExcuteException)
+      return this.equals((InvalidExcuteException)that);
     return false;
   }
 
-  public boolean equals(UnacceptableCourse that) {
+  public boolean equals(InvalidExcuteException that) {
     if (that == null)
       return false;
 
-    boolean this_present_message = true && this.isSetMessage();
-    boolean that_present_message = true && that.isSetMessage();
-    if (this_present_message || that_present_message) {
-      if (!(this_present_message && that_present_message))
+    boolean this_present_why = true && this.isSetWhy();
+    boolean that_present_why = true && that.isSetWhy();
+    if (this_present_why || that_present_why) {
+      if (!(this_present_why && that_present_why))
         return false;
-      if (!this.message.equals(that.message))
+      if (!this.why.equals(that.why))
         return false;
     }
 
@@ -228,20 +228,20 @@ public class UnacceptableCourse extends TException implements org.apache.thrift.
     return 0;
   }
 
-  public int compareTo(UnacceptableCourse other) {
+  public int compareTo(InvalidExcuteException other) {
     if (!getClass().equals(other.getClass())) {
       return getClass().getName().compareTo(other.getClass().getName());
     }
 
     int lastComparison = 0;
-    UnacceptableCourse typedOther = (UnacceptableCourse)other;
+    InvalidExcuteException typedOther = (InvalidExcuteException)other;
 
-    lastComparison = Boolean.valueOf(isSetMessage()).compareTo(typedOther.isSetMessage());
+    lastComparison = Boolean.valueOf(isSetWhy()).compareTo(typedOther.isSetWhy());
     if (lastComparison != 0) {
       return lastComparison;
     }
-    if (isSetMessage()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.message, typedOther.message);
+    if (isSetWhy()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.why, typedOther.why);
       if (lastComparison != 0) {
         return lastComparison;
       }
@@ -263,14 +263,14 @@ public class UnacceptableCourse extends TException implements org.apache.thrift.
 
   @Override
   public String toString() {
-    StringBuilder sb = new StringBuilder("UnacceptableCourse(");
+    StringBuilder sb = new StringBuilder("InvalidExcuteException(");
     boolean first = true;
 
-    sb.append("message:");
-    if (this.message == null) {
+    sb.append("why:");
+    if (this.why == null) {
       sb.append("null");
     } else {
-      sb.append(this.message);
+      sb.append(this.why);
     }
     first = false;
     sb.append(")");
@@ -298,15 +298,15 @@ public class UnacceptableCourse extends TException implements org.apache.thrift.
     }
   }
 
-  private static class UnacceptableCourseStandardSchemeFactory implements SchemeFactory {
-    public UnacceptableCourseStandardScheme getScheme() {
-      return new UnacceptableCourseStandardScheme();
+  private static class InvalidExcuteExceptionStandardSchemeFactory implements SchemeFactory {
+    public InvalidExcuteExceptionStandardScheme getScheme() {
+      return new InvalidExcuteExceptionStandardScheme();
     }
   }
 
-  private static class UnacceptableCourseStandardScheme extends StandardScheme<UnacceptableCourse> {
+  private static class InvalidExcuteExceptionStandardScheme extends StandardScheme<InvalidExcuteException> {
 
-    public void read(org.apache.thrift.protocol.TProtocol iprot, UnacceptableCourse struct) throws org.apache.thrift.TException {
+    public void read(org.apache.thrift.protocol.TProtocol iprot, InvalidExcuteException struct) throws org.apache.thrift.TException {
       org.apache.thrift.protocol.TField schemeField;
       iprot.readStructBegin();
       while (true)
@@ -316,10 +316,10 @@ public class UnacceptableCourse extends TException implements org.apache.thrift.
           break;
         }
         switch (schemeField.id) {
-          case 1: // MESSAGE
+          case 1: // WHY
             if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
-              struct.message = iprot.readString();
-              struct.setMessageIsSet(true);
+              struct.why = iprot.readString();
+              struct.setWhyIsSet(true);
             } else { 
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
@@ -335,13 +335,13 @@ public class UnacceptableCourse extends TException implements org.apache.thrift.
       struct.validate();
     }
 
-    public void write(org.apache.thrift.protocol.TProtocol oprot, UnacceptableCourse struct) throws org.apache.thrift.TException {
+    public void write(org.apache.thrift.protocol.TProtocol oprot, InvalidExcuteException struct) throws org.apache.thrift.TException {
       struct.validate();
 
       oprot.writeStructBegin(STRUCT_DESC);
-      if (struct.message != null) {
-        oprot.writeFieldBegin(MESSAGE_FIELD_DESC);
-        oprot.writeString(struct.message);
+      if (struct.why != null) {
+        oprot.writeFieldBegin(WHY_FIELD_DESC);
+        oprot.writeString(struct.why);
         oprot.writeFieldEnd();
       }
       oprot.writeFieldStop();
@@ -350,34 +350,34 @@ public class UnacceptableCourse extends TException implements org.apache.thrift.
 
   }
 
-  private static class UnacceptableCourseTupleSchemeFactory implements SchemeFactory {
-    public UnacceptableCourseTupleScheme getScheme() {
-      return new UnacceptableCourseTupleScheme();
+  private static class InvalidExcuteExceptionTupleSchemeFactory implements SchemeFactory {
+    public InvalidExcuteExceptionTupleScheme getScheme() {
+      return new InvalidExcuteExceptionTupleScheme();
     }
   }
 
-  private static class UnacceptableCourseTupleScheme extends TupleScheme<UnacceptableCourse> {
+  private static class InvalidExcuteExceptionTupleScheme extends TupleScheme<InvalidExcuteException> {
 
     @Override
-    public void write(org.apache.thrift.protocol.TProtocol prot, UnacceptableCourse struct) throws org.apache.thrift.TException {
+    public void write(org.apache.thrift.protocol.TProtocol prot, InvalidExcuteException struct) throws org.apache.thrift.TException {
       TTupleProtocol oprot = (TTupleProtocol) prot;
       BitSet optionals = new BitSet();
-      if (struct.isSetMessage()) {
+      if (struct.isSetWhy()) {
         optionals.set(0);
       }
       oprot.writeBitSet(optionals, 1);
-      if (struct.isSetMessage()) {
-        oprot.writeString(struct.message);
+      if (struct.isSetWhy()) {
+        oprot.writeString(struct.why);
       }
     }
 
     @Override
-    public void read(org.apache.thrift.protocol.TProtocol prot, UnacceptableCourse struct) throws org.apache.thrift.TException {
+    public void read(org.apache.thrift.protocol.TProtocol prot, InvalidExcuteException struct) throws org.apache.thrift.TException {
       TTupleProtocol iprot = (TTupleProtocol) prot;
       BitSet incoming = iprot.readBitSet(1);
       if (incoming.get(0)) {
-        struct.message = iprot.readString();
-        struct.setMessageIsSet(true);
+        struct.why = iprot.readString();
+        struct.setWhyIsSet(true);
       }
     }
   }

@@ -38,7 +38,7 @@ public class TMinaThriftHandler extends IoHandlerAdapter {
 		TIoSessionTransport trans = new TIoSessionTransport(session);
 
 		session.setAttribute(Constants.TRANSPORT, trans);
-		session.setAttribute(Constants.BUFFER, null);
+		session.setAttribute(Constants.BUFFER, IoBuffer.allocate(1024).setAutoExpand(true));
 	}
 
 	public void sessionClosed(IoSession session) throws Exception {
@@ -54,18 +54,26 @@ public class TMinaThriftHandler extends IoHandlerAdapter {
 		TIoSessionTransport transport = (TIoSessionTransport) session
 				.getAttribute(Constants.TRANSPORT);
 
-		session.setAttribute(Constants.BUFFER, (IoBuffer) message);
+        IoBuffer buf = (IoBuffer)session.getAttribute(Constants.BUFFER);
+        if (buf.remaining() > 0) {
+            buf.put((IoBuffer)message);
+            buf.flip();
 
-		TProcessor processor = this.processorFactory.getProcessor(transport);
-		if (processor != null) {
-			TTransport inputTransport = inputTransportFactory.getTransport(transport);
-			TTransport outputTransport = outputTransportFactory.getTransport(transport);
+            TProcessor processor = this.processorFactory.getProcessor(transport);
+            if (processor != null) {
+                TTransport inputTransport = inputTransportFactory.getTransport(transport);
+                TTransport outputTransport = outputTransportFactory.getTransport(transport);
 
-			processor.process(inputProtocolFactory.getProtocol(inputTransport),
-					outputProtocolFactory.getProtocol(outputTransport));
-		} else {
-			throw new TTransportException("processor is null");
-		}
+                processor.process(inputProtocolFactory.getProtocol(inputTransport),
+                        outputProtocolFactory.getProtocol(outputTransport));
+            } else {
+                throw new TTransportException("processor is null");
+            }
+        } else {
+            buf.position(buf.limit() - 1);
+            buf.put((IoBuffer)message);
+            buf.flip();
+        }
 	}
 
 	public void messageSent(IoSession session, Object message) throws Exception {
