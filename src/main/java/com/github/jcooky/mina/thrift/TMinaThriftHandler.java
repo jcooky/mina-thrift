@@ -60,6 +60,7 @@ public class TMinaThriftHandler extends IoHandlerAdapter {
 		if (processor != null) {
 			TTransport inputTransport = inputTransportFactory.getTransport(transport);
 			TTransport outputTransport = outputTransportFactory.getTransport(transport);
+
 			processor.process(inputProtocolFactory.getProtocol(inputTransport),
 					outputProtocolFactory.getProtocol(outputTransport));
 		} else {

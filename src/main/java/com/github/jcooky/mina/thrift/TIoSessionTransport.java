@@ -15,9 +15,8 @@ public class TIoSessionTransport extends TTransport {
 	
 	public static class InputTransportFactory extends TTransportFactory {
 
-		public TTransport getTransport(TTransport trans) {
-			final TIoSessionTransport transport = (TIoSessionTransport)trans;
-			final IoBuffer buffer = (IoBuffer)transport.getSession().getAttribute(Constants.BUFFER);
+		public TTransport getTransport(final TTransport trans) {
+            final IoSession session = ((TIoSessionTransport)trans).getSession();
 			
 			return new TTransport() {
 				
@@ -33,17 +32,10 @@ public class TIoSessionTransport extends TTransport {
 
 				public int read(byte[] buf, int off, int len)
 						throws TTransportException {
+                    IoBuffer buffer = (IoBuffer)session.getAttribute(Constants.BUFFER);
+
 					int readLen = buffer.remaining() > len ? len : buffer.remaining();
-					buffer.get(buf, off, len);
-					
-					StringBuilder sb = new StringBuilder();
-					sb.append("pos=").append(off).append(" len=").append(len).append(": ");
-					for (int i = off ; i < len ; ++i) {
-						sb.append(buf[i]);
-						if (i != len - 1)
-							sb.append(' ');
-					}
-					logger.debug("ReadBuffer[{}]", sb);
+					buffer.get(buf, off, readLen);
 					
 					return readLen;
 				}
@@ -90,13 +82,7 @@ public class TIoSessionTransport extends TTransport {
 
 	public void write(byte[] buf, int off, int len) throws TTransportException {
 		StringBuilder sb = new StringBuilder();
-		sb.append("pos=").append(off).append(" len=").append(len).append(": ");
-		for (int i = off ; i < len ; ++i) {
-			sb.append(buf[i]);
-			if (i != len - 1)
-				sb.append(' ');
-		}
-		logger.debug("WriteBuffer[{}]", sb);
+
 		IoBuffer buffer = IoBuffer.allocate(1024).setAutoExpand(true);
 		buffer.clear();
 		buffer.put(buf, off, len);

@@ -35,6 +35,7 @@ public class TMinaServerTest {
 	
 	@Before
 	public void setUp() throws Exception {
+        logger.info("test log");
 		MockitoAnnotations.initMocks(this);
 		
 		when(mockCourseService.getCourseInventory()).thenReturn(Collections.EMPTY_LIST);
