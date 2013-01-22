@@ -1,6 +1,5 @@
 package com.github.jcooky.mina.thrift;
 
-import org.apache.mina.core.buffer.IoBuffer;
 import org.apache.mina.core.service.IoHandlerAdapter;
 import org.apache.mina.core.session.IdleStatus;
 import org.apache.mina.core.session.IoSession;
@@ -38,7 +37,7 @@ public class TMinaThriftHandler extends IoHandlerAdapter {
 		TIoSessionTransport trans = new TIoSessionTransport(session);
 
 		session.setAttribute(Constants.TRANSPORT, trans);
-		session.setAttribute(Constants.BUFFER, IoBuffer.allocate(1024).setAutoExpand(true));
+		session.setAttribute(Constants.MESSAGE, null);
 	}
 
 	public void sessionClosed(IoSession session) throws Exception {
@@ -53,13 +52,10 @@ public class TMinaThriftHandler extends IoHandlerAdapter {
 	public void messageReceived(IoSession session, Object message) throws Exception {
 		TIoSessionTransport transport = (TIoSessionTransport) session
 				.getAttribute(Constants.TRANSPORT);
+        session.setAttribute(Constants.MESSAGE, message);
 
-        IoBuffer buf = (IoBuffer)session.getAttribute(Constants.BUFFER);
-        if (buf.remaining() > 0) {
-            buf.put((IoBuffer)message);
-            buf.flip();
-
-            TProcessor processor = this.processorFactory.getProcessor(transport);
+        TProcessor processor = this.processorFactory.getProcessor(transport);
+        try {
             if (processor != null) {
                 TTransport inputTransport = inputTransportFactory.getTransport(transport);
                 TTransport outputTransport = outputTransportFactory.getTransport(transport);
@@ -69,10 +65,8 @@ public class TMinaThriftHandler extends IoHandlerAdapter {
             } else {
                 throw new TTransportException("processor is null");
             }
-        } else {
-            buf.position(buf.limit() - 1);
-            buf.put((IoBuffer)message);
-            buf.flip();
+        } finally {
+            session.setAttribute(Constants.MESSAGE, null);
         }
 	}
 

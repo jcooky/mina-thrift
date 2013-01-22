@@ -4,12 +4,10 @@ import com.github.jcooky.mina.thrift.TIoAcceptorServerTransport;
 import com.github.jcooky.mina.thrift.TIoSessionTransport;
 import com.github.jcooky.mina.thrift.TMinaServer;
 import org.apache.thrift.TProcessor;
-import org.apache.thrift.protocol.TBinaryProtocol;
+import org.apache.thrift.protocol.TCompactProtocol;
 import org.apache.thrift.protocol.TProtocol;
 import org.apache.thrift.server.TServer;
-import org.apache.thrift.transport.TServerTransport;
-import org.apache.thrift.transport.TSocket;
-import org.apache.thrift.transport.TTransportFactory;
+import org.apache.thrift.transport.*;
 import org.junit.rules.TestRule;
 import org.junit.runner.Description;
 import org.junit.runners.model.Statement;
@@ -25,7 +23,7 @@ public class TMinaServerTestRule implements TestRule {
 
 	private TServer server;
 	private TServerTransport socket ;
-    private TSocket clientSocket;
+    private TTransport clientSocket;
     private TProtocol clientProtocol;
 
     public TMinaServerTestRule(TProcessor processor) {
@@ -57,7 +55,7 @@ public class TMinaServerTestRule implements TestRule {
 		socket = new TIoAcceptorServerTransport(PORT);
 		server = new TMinaServer(new TMinaServer.Args(socket)
 												.processor(processor)
-												.protocolFactory(new TBinaryProtocol.Factory())
+												.protocolFactory(new TCompactProtocol.Factory())
 												.inputTransportFactory(new TIoSessionTransport.InputTransportFactory())
 												.outputTransportFactory(new TTransportFactory()));
 
@@ -69,7 +67,8 @@ public class TMinaServerTestRule implements TestRule {
         Thread.sleep(100);
 
         clientSocket = new TSocket("localhost", PORT, SOCKET_TIMEOUT);
-        clientProtocol = new TBinaryProtocol(clientSocket);
+        clientSocket = new TFramedTransport(clientSocket);
+        clientProtocol = new TCompactProtocol(clientSocket);
         clientSocket.open();
 	}
 	

@@ -1,11 +1,9 @@
 package com.github.jcooky.mina.thrift;
 
+import com.github.jcooky.mina.thrift.codec.TFrameProtocolCodecFactory;
 import org.apache.mina.core.service.IoAcceptor;
 import org.apache.mina.core.service.IoHandler;
-import org.apache.mina.core.service.IoService;
-import org.apache.mina.core.service.IoServiceListener;
-import org.apache.mina.core.session.IdleStatus;
-import org.apache.mina.core.session.IoSession;
+import org.apache.mina.filter.codec.ProtocolCodecFilter;
 import org.apache.mina.filter.logging.LoggingFilter;
 import org.apache.mina.transport.socket.nio.NioSocketAcceptor;
 import org.apache.thrift.transport.TServerTransport;
@@ -27,9 +25,10 @@ public class TIoAcceptorServerTransport extends TServerTransport {
 		acceptor.setReuseAddress(true);
 		
 		acceptor.setDefaultLocalAddress(new InetSocketAddress(port));
-		
+
 		acceptor.getFilterChain().addLast("logging", new LoggingFilter());
-		
+        acceptor.getFilterChain().addLast("codec", new ProtocolCodecFilter(new TFrameProtocolCodecFactory()));
+
 		this.acceptor = acceptor;
 	}
 	

@@ -1,5 +1,6 @@
 package com.github.jcooky.mina.thrift;
 
+import com.github.jcooky.mina.thrift.message.TMessage;
 import org.apache.mina.core.buffer.IoBuffer;
 import org.apache.mina.core.session.IoSession;
 import org.apache.thrift.transport.TTransport;
@@ -32,10 +33,11 @@ public class TIoSessionTransport extends TTransport {
 
 				public int read(byte[] buf, int off, int len)
 						throws TTransportException {
-                    IoBuffer buffer = (IoBuffer)session.getAttribute(Constants.BUFFER);
+                    TMessage message = (TMessage)session.getAttribute(Constants.MESSAGE);
+                    IoBuffer frame = message.getFrame();
 
-					int readLen = buffer.remaining() > len ? len : buffer.remaining();
-					buffer.get(buf, off, readLen);
+					int readLen = frame.remaining() > len ? len : frame.remaining();
+					frame.get(buf, off, readLen);
 					
 					return readLen;
 				}
@@ -81,13 +83,12 @@ public class TIoSessionTransport extends TTransport {
 	}
 
 	public void write(byte[] buf, int off, int len) throws TTransportException {
-		StringBuilder sb = new StringBuilder();
+		IoBuffer buffer = IoBuffer.allocate(len);
 
-		IoBuffer buffer = IoBuffer.allocate(1024).setAutoExpand(true);
 		buffer.clear();
 		buffer.put(buf, off, len);
 		buffer.flip();
-		session.write(buffer);
+		session.write(new TMessage(len, buffer));
 		buffer.free();
 	}
 
