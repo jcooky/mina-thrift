@@ -1,6 +1,6 @@
 package org.apache.thrift.test;
 
-import com.github.jcooky.mina.thrift.rule.ThriftServerTestRule;
+import com.github.jcooky.mina.thrift.test.rule.ThriftServerTestRule;
 import org.apache.thrift.test.gen.CourseService;
 import org.junit.Before;
 import org.junit.Rule;

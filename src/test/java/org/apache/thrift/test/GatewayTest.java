@@ -1,6 +1,6 @@
 package org.apache.thrift.test;
 
-import com.github.jcooky.mina.thrift.rule.ThriftServerTestRule;
+import com.github.jcooky.mina.thrift.test.rule.ThriftServerTestRule;
 import org.apache.commons.io.FileUtils;
 import org.apache.thrift.test.gen.Gateway;
 import org.apache.thrift.test.gen.InvalidExcuteException;

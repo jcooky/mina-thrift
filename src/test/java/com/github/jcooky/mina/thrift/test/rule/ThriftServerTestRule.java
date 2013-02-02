@@ -1,4 +1,4 @@
-package com.github.jcooky.mina.thrift.rule;
+package com.github.jcooky.mina.thrift.test.rule;
 
 import org.apache.thrift.TProcessor;
 import org.apache.thrift.protocol.TBinaryProtocol;

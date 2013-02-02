@@ -1,6 +1,6 @@
 package com.github.jcooky.mina.thrift;
 
-import com.github.jcooky.mina.thrift.rule.TMinaServerTestRule;
+import com.github.jcooky.mina.thrift.test.rule.TMinaServerTestRule;
 import org.apache.commons.io.FileUtils;
 import org.apache.thrift.test.gen.Gateway;
 import org.apache.thrift.test.gen.InvalidExcuteException;
@@ -19,18 +19,18 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
 public class GatewayTest {
-	private Logger logger = LoggerFactory.getLogger(getClass());
-	
-	private Gateway.Iface gwService = mock(Gateway.Iface.class);
-    public @Rule
-    TMinaServerTestRule serverTestRule = new TMinaServerTestRule(new Gateway.Processor(gwService));
+    private Logger logger = LoggerFactory.getLogger(getClass());
 
-	@Before
-	public void setUp() throws Exception {
-	}
-	
-	@Test
-	public void testThriftServer() throws Exception {
+    private Gateway.Iface gwService = mock(Gateway.Iface.class);
+    @Rule
+    public TMinaServerTestRule serverTestRule = new TMinaServerTestRule(new Gateway.Processor<Gateway.Iface>(gwService));
+
+    @Before
+    public void setUp() throws Exception {
+    }
+
+    @Test
+    public void testThriftServer() throws Exception {
         Gateway.Iface client = new Gateway.Client(serverTestRule.getClientProtocol());
         List<String> names = new ArrayList<String>();
 

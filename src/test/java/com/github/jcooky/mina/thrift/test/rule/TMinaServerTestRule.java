@@ -1,4 +1,4 @@
-package com.github.jcooky.mina.thrift.rule;
+package com.github.jcooky.mina.thrift.test.rule;
 
 import com.github.jcooky.mina.thrift.TIoAcceptorServerTransport;
 import com.github.jcooky.mina.thrift.TIoSessionTransport;
@@ -64,7 +64,6 @@ public class TMinaServerTestRule implements TestRule {
 				server.serve();
 //			}
 //		}.start();
-        Thread.sleep(100);
 
         clientSocket = new TSocket("localhost", PORT, SOCKET_TIMEOUT);
         clientSocket = new TFramedTransport(clientSocket);

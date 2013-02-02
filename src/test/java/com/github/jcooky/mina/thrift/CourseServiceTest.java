@@ -1,6 +1,6 @@
 package com.github.jcooky.mina.thrift;
 
-import com.github.jcooky.mina.thrift.rule.TMinaServerTestRule;
+import com.github.jcooky.mina.thrift.test.rule.TMinaServerTestRule;
 import org.apache.thrift.TApplicationException;
 import org.apache.thrift.test.gen.CourseService;
 import org.junit.Before;

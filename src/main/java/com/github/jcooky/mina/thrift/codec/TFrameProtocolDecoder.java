@@ -21,15 +21,11 @@ public class TFrameProtocolDecoder implements MessageDecoder {
             return MessageDecoderResult.NEED_DATA;
         else if (in.remaining() > 4) {
             int frameSize = in.getInt();
-            while(true) {
-                if (in.remaining() >= frameSize)
-                    return MessageDecoderResult.OK;
-                else {
-                    synchronized (in) {
-                        in.position(in.position() - 4);
-                    }
-                    return MessageDecoderResult.NEED_DATA;
-                }
+            if (in.remaining() >= frameSize)
+                return MessageDecoderResult.OK;
+            else {
+                in.position(in.position() - 4);
+                return MessageDecoderResult.NEED_DATA;
             }
         }
 
@@ -38,8 +34,8 @@ public class TFrameProtocolDecoder implements MessageDecoder {
 
     @Override
     public MessageDecoderResult decode(IoSession session, IoBuffer in, ProtocolDecoderOutput out) throws Exception {
-        if (!(Boolean)session.setAttribute("decode_finish")) {
-            session.setAttribute("decode_finish", true);
+        if (Boolean.FALSE.equals(session.setAttribute("decode-finish"))) {
+            session.setAttribute("decode-finish", Boolean.TRUE);
             TMessage msg = new TMessage(in.getInt(), in);
             out.write(msg);
         }
@@ -49,6 +45,6 @@ public class TFrameProtocolDecoder implements MessageDecoder {
 
     @Override
     public void finishDecode(IoSession session, ProtocolDecoderOutput out) throws Exception {
-        session.setAttribute("decode_finish", false);
+        session.setAttribute("decode-finish", Boolean.FALSE);
     }
 }
