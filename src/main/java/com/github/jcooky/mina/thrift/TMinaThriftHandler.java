@@ -47,6 +47,7 @@ public class TMinaThriftHandler extends IoHandlerAdapter {
 	}
 
 	public void exceptionCaught(IoSession session, Throwable cause) throws Exception {
+        logger.debug(cause.getMessage(), cause);
 	}
 
 	public void messageReceived(IoSession session, Object message) throws Exception {

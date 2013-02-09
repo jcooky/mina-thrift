@@ -15,6 +15,7 @@ import org.apache.mina.filter.codec.demux.MessageDecoderResult;
  * To change this template use File | Settings | File Templates.
  */
 public class TFrameProtocolDecoder implements MessageDecoder {
+    private static final String DEC_FIN_KEY = "decode-finish";
     @Override
     public MessageDecoderResult decodable(IoSession session, IoBuffer in) {
         if (in.remaining() == 0 || (in.remaining() > 0 && in.remaining() < 4))
@@ -24,7 +25,6 @@ public class TFrameProtocolDecoder implements MessageDecoder {
             if (in.remaining() >= frameSize)
                 return MessageDecoderResult.OK;
             else {
-                in.position(in.position() - 4);
                 return MessageDecoderResult.NEED_DATA;
             }
         }
@@ -34,8 +34,9 @@ public class TFrameProtocolDecoder implements MessageDecoder {
 
     @Override
     public MessageDecoderResult decode(IoSession session, IoBuffer in, ProtocolDecoderOutput out) throws Exception {
-        if (Boolean.FALSE.equals(session.setAttribute("decode-finish"))) {
-            session.setAttribute("decode-finish", Boolean.TRUE);
+        if (session.getAttribute(DEC_FIN_KEY) == null
+                || Boolean.FALSE.equals(session.getAttribute(DEC_FIN_KEY))) {
+            session.setAttribute(DEC_FIN_KEY, Boolean.TRUE);
             TMessage msg = new TMessage(in.getInt(), in);
             out.write(msg);
         }
@@ -45,6 +46,6 @@ public class TFrameProtocolDecoder implements MessageDecoder {
 
     @Override
     public void finishDecode(IoSession session, ProtocolDecoderOutput out) throws Exception {
-        session.setAttribute("decode-finish", Boolean.FALSE);
+        session.setAttribute(DEC_FIN_KEY, Boolean.FALSE);
     }
 }
