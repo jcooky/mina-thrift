@@ -20,8 +20,7 @@ public class CourseServiceTest {
 	private Logger logger = LoggerFactory.getLogger(getClass());
 	
 	private CourseService.Iface mockCourseService = mock(CourseService.Iface.class);
-    public @Rule
-    TMinaServerTestRule serverTestRule = new TMinaServerTestRule(new CourseService.Processor(mockCourseService));
+    public TMinaServerTestRule serverTestRule = new TMinaServerTestRule();
 
 	@Before
 	public void setUp() throws Exception {

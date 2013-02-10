@@ -1,20 +1,23 @@
 package com.github.jcooky.mina.thrift.test.rule;
 
-import com.github.jcooky.mina.thrift.TIoAcceptorServerTransport;
-import com.github.jcooky.mina.thrift.TIoSessionTransport;
-import com.github.jcooky.mina.thrift.TMinaServer;
 import org.apache.thrift.TProcessor;
 import org.apache.thrift.protocol.TCompactProtocol;
 import org.apache.thrift.protocol.TProtocol;
 import org.apache.thrift.server.TServer;
-import org.apache.thrift.transport.*;
-import org.junit.rules.TestRule;
-import org.junit.runner.Description;
-import org.junit.runners.model.Statement;
+import org.apache.thrift.transport.TFramedTransport;
+import org.apache.thrift.transport.TServerTransport;
+import org.apache.thrift.transport.TSocket;
+import org.apache.thrift.transport.TTransport;
+import org.apache.thrift.transport.TTransportFactory;
+import org.junit.rules.TestWatcher;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class TMinaServerTestRule implements TestRule {
+import com.github.jcooky.mina.thrift.TIoAcceptorServerTransport;
+import com.github.jcooky.mina.thrift.TIoSessionTransport;
+import com.github.jcooky.mina.thrift.TMinaServer;
+
+public class TMinaServerTestRule extends TestWatcher {
 	private Logger logger = LoggerFactory.getLogger(getClass());
 	
 	private int PORT = 9091;
@@ -25,31 +28,16 @@ public class TMinaServerTestRule implements TestRule {
 	private TServerTransport socket ;
     private TTransport clientSocket;
     private TProtocol clientProtocol;
-
-    public TMinaServerTestRule(TProcessor processor) {
-        this.processor = processor;
+    
+    public void setProcessor(TProcessor processor) {
+    	this.processor = processor;
     }
-
+    
     public TProtocol getClientProtocol() {
-        return clientProtocol;
+    	return clientProtocol;
     }
 
-    @Override
-    public Statement apply(final Statement statement, Description description) {
-        return new Statement() {
-            @Override
-            public void evaluate() throws Throwable {
-                init();
-                try {
-                    statement.evaluate();
-                } finally {
-                    close();
-                }
-            }
-        };
-    }
-
-	public void init() throws Exception {
+	public void starting() throws Exception {
         logger.info("test log");
 
 		socket = new TIoAcceptorServerTransport(PORT);
@@ -71,7 +59,7 @@ public class TMinaServerTestRule implements TestRule {
         clientSocket.open();
 	}
 	
-	public void close() throws Exception {
+	public void finished() throws Exception {
         clientSocket.close();
 		server.stop();
 		socket.close();
