@@ -4,7 +4,6 @@ import com.github.jcooky.mina.thrift.test.rule.TMinaServerTestRule;
 import org.apache.thrift.TApplicationException;
 import org.apache.thrift.test.gen.CourseService;
 import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,7 +19,7 @@ public class CourseServiceTest {
 	private Logger logger = LoggerFactory.getLogger(getClass());
 	
 	private CourseService.Iface mockCourseService = mock(CourseService.Iface.class);
-    public TMinaServerTestRule serverTestRule = new TMinaServerTestRule();
+    public TMinaServerTestRule serverTestRule = new TMinaServerTestRule(new CourseService.Processor<CourseService.Iface>(mockCourseService));
 
 	@Before
 	public void setUp() throws Exception {

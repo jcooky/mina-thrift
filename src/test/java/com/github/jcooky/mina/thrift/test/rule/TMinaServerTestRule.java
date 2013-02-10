@@ -29,8 +29,8 @@ public class TMinaServerTestRule extends TestWatcher {
     private TTransport clientSocket;
     private TProtocol clientProtocol;
     
-    public void setProcessor(TProcessor processor) {
-    	this.processor = processor;
+    public TMinaServerTestRule(TProcessor processor) {
+        this.processor = processor;
     }
     
     public TProtocol getClientProtocol() {
