@@ -2,6 +2,7 @@ package com.github.jcooky.mina.thrift.test.rule;
 
 import org.apache.thrift.TProcessor;
 import org.apache.thrift.protocol.TCompactProtocol;
+import org.apache.thrift.protocol.TJSONProtocol;
 import org.apache.thrift.protocol.TProtocol;
 import org.apache.thrift.server.TServer;
 import org.apache.thrift.transport.TFramedTransport;
@@ -9,7 +10,9 @@ import org.apache.thrift.transport.TServerTransport;
 import org.apache.thrift.transport.TSocket;
 import org.apache.thrift.transport.TTransport;
 import org.apache.thrift.transport.TTransportFactory;
-import org.junit.rules.TestWatcher;
+import org.junit.rules.TestRule;
+import org.junit.runner.Description;
+import org.junit.runners.model.Statement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,7 +20,7 @@ import com.github.jcooky.mina.thrift.TIoAcceptorServerTransport;
 import com.github.jcooky.mina.thrift.TIoSessionTransport;
 import com.github.jcooky.mina.thrift.TMinaServer;
 
-public class TMinaServerTestRule extends TestWatcher {
+public class TMinaServerTestRule implements TestRule {
 	private Logger logger = LoggerFactory.getLogger(getClass());
 	
 	private int PORT = 9091;
@@ -36,6 +39,21 @@ public class TMinaServerTestRule extends TestWatcher {
     public TProtocol getClientProtocol() {
     	return clientProtocol;
     }
+    
+	public Statement apply(final Statement base, Description description) {
+		return new Statement() {
+
+			public void evaluate() throws Throwable {
+				starting();
+				try {
+					base.evaluate();
+				} finally {
+					finished();
+				}
+			}
+			
+		};
+	}
 
 	public void starting() throws Exception {
         logger.info("test log");
