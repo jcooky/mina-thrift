@@ -19,7 +19,6 @@ import com.github.jcooky.mina.thrift.message.TMessage;
  */
 public class TFrameProtocolDecoder implements MessageDecoder {
 	private static final Logger logger = LoggerFactory.getLogger(TFrameProtocolDecoder.class);
-    private static final String DEC_FIN_KEY = "decode-finish";
     @Override
     public MessageDecoderResult decodable(IoSession session, IoBuffer in) {
         if (in.remaining() == 0 || (in.remaining() > 0 && in.remaining() < 4))
@@ -40,7 +39,7 @@ public class TFrameProtocolDecoder implements MessageDecoder {
     public MessageDecoderResult decode(IoSession session, IoBuffer in, ProtocolDecoderOutput out) throws Exception {
     	int frameSize = in.getInt();
     	int limit = in.limit();
-    	in.limit(4 + frameSize);
+    	in.limit(in.position() + frameSize);
     	IoBuffer frame = IoBuffer.allocate(frameSize, true);
     	frame.clear();
     	frame.put(in);
