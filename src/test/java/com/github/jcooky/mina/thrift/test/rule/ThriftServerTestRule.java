@@ -2,6 +2,7 @@ package com.github.jcooky.mina.thrift.test.rule;
 
 import org.apache.thrift.TProcessor;
 import org.apache.thrift.protocol.TBinaryProtocol;
+import org.apache.thrift.protocol.TCompactProtocol;
 import org.apache.thrift.protocol.TProtocol;
 import org.apache.thrift.server.THsHaServer;
 import org.apache.thrift.server.THsHaServer.Args;
@@ -52,7 +53,7 @@ public class ThriftServerTestRule implements TestRule {
 		serverSocket = new TNonblockingServerSocket(PORT);
 		server = new THsHaServer(new Args(serverSocket)
 												.processor(processor)
-												.protocolFactory(new TBinaryProtocol.Factory())
+												.protocolFactory(new TCompactProtocol.Factory())
 												.transportFactory(new TFramedTransport.Factory()));
 
 		new Thread() {
@@ -64,7 +65,7 @@ public class ThriftServerTestRule implements TestRule {
         //Setup the transport and protocol
         TSocket clientSocket = new TSocket("127.0.0.1", PORT, SOCKET_TIMEOUT);
         clientTransport = new TFramedTransport(clientSocket);
-        clientProtocol = new TBinaryProtocol(clientTransport);
+        clientProtocol = new TCompactProtocol(clientTransport);
 
         //The transport must be opened before you can begin using
         clientTransport.open();

@@ -1,11 +1,8 @@
 package com.github.jcooky.mina.thrift;
 
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.verify;
 
 import java.io.File;
 import java.nio.ByteBuffer;
@@ -16,10 +13,9 @@ import org.apache.commons.io.FileUtils;
 import org.apache.thrift.protocol.TProtocol;
 import org.apache.thrift.test.gen.Gateway;
 import org.apache.thrift.test.gen.InvalidExcuteException;
+import org.junit.After;
 import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
-import org.mockito.internal.matchers.Any;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 import org.slf4j.Logger;
@@ -30,25 +26,21 @@ import com.github.jcooky.mina.thrift.test.rule.TMinaServerTestRule;
 public class GatewayTest {
 	private Logger logger = LoggerFactory.getLogger(getClass());
 
-	private Boolean calledPut = false;
-	private Gateway.Iface gwService = mock(Gateway.Iface.class, new Answer() {
+	private Gateway.Iface gwService ;
 
-		@Override
-		public Object answer(InvocationOnMock invocation) throws Throwable {
-			if ("put".equals(invocation.getMethod().getName())) {
-				calledPut = true;
-			}
-			return null;
-		}
-		
-	});
-
-    @Rule
-	public TMinaServerTestRule minaServerTestRule = new TMinaServerTestRule(new Gateway.Processor<Gateway.Iface>(gwService));
+	private TMinaServerTestRule minaServerTestRule ;
     
     @Before
     public void setUp() throws Exception {
+    	gwService = mock(Gateway.Iface.class);
     	
+    	minaServerTestRule = new TMinaServerTestRule(new Gateway.Processor<Gateway.Iface>(gwService));
+    	minaServerTestRule.starting();
+    }
+    
+    @After
+    public void tearDown() throws Exception {
+    	minaServerTestRule.finished();
     }
 
 	@Test(timeout=1000)
@@ -69,7 +61,6 @@ public class GatewayTest {
 
 		client.put("test", "test", names, binaries);
 		
-		while(!calledPut) Thread.sleep(1);
 		verify(gwService).put("test", "test", names, binaries);
 	}
 }

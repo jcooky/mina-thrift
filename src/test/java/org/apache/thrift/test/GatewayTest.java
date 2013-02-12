@@ -15,6 +15,7 @@ import java.util.List;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
+import static org.junit.Assert.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -47,7 +48,7 @@ public class GatewayTest {
         binaries.add(ByteBuffer.wrap(FileUtils.readFileToByteArray(new File("target/test-classes/org/apache/thrift/test/gen/InvalidExcuteException.class"))));
 
 
-        client.put("test", "test", names, binaries);
+        assertFalse(client.put("test", "test", names, binaries));
 
         verify(gwService).put("test", "test", names, binaries);
     }

@@ -20,7 +20,7 @@ import com.github.jcooky.mina.thrift.TIoAcceptorServerTransport;
 import com.github.jcooky.mina.thrift.TIoSessionTransport;
 import com.github.jcooky.mina.thrift.TMinaServer;
 
-public class TMinaServerTestRule implements TestRule {
+public class TMinaServerTestRule {
 	private Logger logger = LoggerFactory.getLogger(getClass());
 	
 	private int PORT = 9091;
@@ -39,21 +39,6 @@ public class TMinaServerTestRule implements TestRule {
     public TProtocol getClientProtocol() {
     	return clientProtocol;
     }
-    
-	public Statement apply(final Statement base, Description description) {
-		return new Statement() {
-
-			public void evaluate() throws Throwable {
-				starting();
-				try {
-					base.evaluate();
-				} finally {
-					finished();
-				}
-			}
-			
-		};
-	}
 
 	public void starting() throws Exception {
         logger.info("test log");
