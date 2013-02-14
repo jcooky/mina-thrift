@@ -8,6 +8,39 @@
 	<packaging>jar</packaging>
 
 	<name>mina-thrift</name>
+	<url>http://jcooky.github.com/mina-thrift</url>
+	<description>Thrift Processor Using Mina</description>
+	<scm>
+		<url>https://github.com/jcooky/mina-thrift</url>
+		<connection>scm:git:https://github.com/jcooky/mina-thrift.git</connection>
+		<developerConnection>scm:git:https://github.com/jcooky/mina-thrift.git</developerConnection>
+	</scm>
+	<issueManagement>
+		<system>github</system>
+		<url>https://github.com/jcooky/mina-thrift/issues</url>
+	</issueManagement>
+	<organization>
+		<name>JCooky</name>
+		<url>https://github.com/jcooky</url>
+	</organization>
+	<ciManagement>
+		<system>travis</system>
+		<url>https://travis-ci.org/jcooky/mina-thrift</url>
+	</ciManagement>
+	<developers>
+		<developer>
+			<id>jcooky</id>
+			<name>JCooky</name>
+			<url>https://github.com/jcooky</url>
+			<email>bak723@gmail.com</email>
+		</developer>
+	</developers>
+	<licenses>
+		<license>
+			<name>BSD</name>
+			<url>https://raw.github.com/jcooky/mina-thrift/master/LICENSE</url>
+		</license>
+	</licenses>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -199,16 +232,18 @@
 			</plugins>
 		</pluginManagement>
 	</build>
-	<url>http://jcooky.github.com/mina-thrift</url>
-	<description>Thrift Processor Using Mina</description>
-	<scm>
-		<url>https://github.com/jcooky/mina-thrift.git</url>
-		<connection>scm:git:git://github.com/jcooky/mina-thrift.git</connection>
-		<developerConnection>scm:git:git@github.com:jcooky/mina-thrift.git</developerConnection>
-		<tag>0.0.2</tag>
-	</scm>
-	<issueManagement>
-		<system>github</system>
-		<url>https://github.com/jcooky/mina-thrift/issues</url>
-	</issueManagement>
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>cobertura-maven-plugin</artifactId>
+				<version>2.5.2</version>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>findbugs-maven-plugin</artifactId>
+				<version>2.5.2</version>
+			</plugin>
+		</plugins>
+	</reporting>
 </project>
