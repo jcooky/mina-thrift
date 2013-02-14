@@ -27,7 +27,7 @@ public class TIoAcceptorServerTransport extends TServerTransport {
 		acceptor.setDefaultLocalAddress(new InetSocketAddress(port));
 
 //		acceptor.getFilterChain().addLast("logging", new LoggingFilter());
-        acceptor.getFilterChain().addLast("thread", new ExecutorFilter(100, 150));
+//        acceptor.getFilterChain().addLast("thread", new ExecutorFilter(100, 150));
         acceptor.getFilterChain().addLast("codec", new ProtocolCodecFilter(new TFrameProtocolCodecFactory()));
 
 		this.acceptor = acceptor;
@@ -52,7 +52,8 @@ public class TIoAcceptorServerTransport extends TServerTransport {
 
 	public void close() {
 		if (!acceptor.isDisposed() && !acceptor.isDisposing()) {
-			acceptor.dispose(true);
+			acceptor.unbind();
+			acceptor.dispose(false);
 		}
 	}
 
