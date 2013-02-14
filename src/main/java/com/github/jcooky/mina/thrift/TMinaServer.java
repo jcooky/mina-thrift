@@ -1,11 +1,15 @@
 package com.github.jcooky.mina.thrift;
 
+import org.apache.mina.core.session.AttributeKey;
 import org.apache.mina.core.session.IoSessionConfig;
 import org.apache.thrift.server.TServer;
 import org.apache.thrift.transport.TServerTransport;
 import org.apache.thrift.transport.TTransportException;
 
 public class TMinaServer extends TServer {
+	public static final AttributeKey TRANSPORT = new AttributeKey(TMinaServer.class, "transport");
+	public static final AttributeKey MESSAGE = new AttributeKey(TMinaServer.class, "buffer");
+	
 	public static class Args extends AbstractServerArgs<Args> {
 		int readBufferSize = 2048, writeTimout = 10 * 1000, idleTime = 10;
 

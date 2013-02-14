@@ -36,8 +36,8 @@ public class TMinaThriftHandler extends IoHandlerAdapter {
 	public void sessionOpened(IoSession session) throws Exception {
 		TIoSessionTransport trans = new TIoSessionTransport(session);
 
-		session.setAttribute(Constants.TRANSPORT, trans);
-		session.setAttribute(Constants.MESSAGE, null);
+		session.setAttribute(TMinaServer.TRANSPORT, trans);
+		session.setAttribute(TMinaServer.MESSAGE, null);
 	}
 
 	public void sessionClosed(IoSession session) throws Exception {
@@ -48,13 +48,12 @@ public class TMinaThriftHandler extends IoHandlerAdapter {
 
 	public void exceptionCaught(IoSession session, Throwable cause) throws Exception {
         logger.debug(cause.getMessage(), cause);
-        throw (Exception)cause;
 	}
 
 	public void messageReceived(IoSession session, Object message) throws Exception {
 		TIoSessionTransport transport = (TIoSessionTransport) session
-				.getAttribute(Constants.TRANSPORT);
-        session.setAttribute(Constants.MESSAGE, message);
+				.getAttribute(TMinaServer.TRANSPORT);
+        session.setAttribute(TMinaServer.MESSAGE, message);
 
         TProcessor processor = this.processorFactory.getProcessor(transport);
         try {
@@ -68,7 +67,7 @@ public class TMinaThriftHandler extends IoHandlerAdapter {
                 throw new TTransportException("processor is null");
             }
         } finally {
-            session.setAttribute(Constants.MESSAGE, null);
+            session.setAttribute(TMinaServer.MESSAGE, null);
         }
 	}
 

@@ -13,9 +13,6 @@ public class TMessage {
     private int frameSize;
     private IoBuffer frame;
 
-    public TMessage() {
-        super();
-    }
 
     public TMessage(int frameSize, IoBuffer frame) {
         this.frameSize = frameSize;
@@ -26,15 +23,8 @@ public class TMessage {
         return frameSize;
     }
 
-    public void setFrameSize(int frameSize) {
-        this.frameSize = frameSize;
-    }
-
     public IoBuffer getFrame() {
         return frame;
     }
 
-    public void setFrame(IoBuffer frame) {
-        this.frame = frame;
-    }
 }

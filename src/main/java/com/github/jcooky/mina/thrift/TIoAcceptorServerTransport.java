@@ -15,8 +15,6 @@ import java.io.IOException;
 import java.net.InetSocketAddress;
 
 public class TIoAcceptorServerTransport extends TServerTransport {
-	private static final Logger logger = LoggerFactory.getLogger(TIoAcceptorServerTransport.class);
-	
 	private IoAcceptor acceptor;
 	
 	public TIoAcceptorServerTransport(int port) {
@@ -26,8 +24,6 @@ public class TIoAcceptorServerTransport extends TServerTransport {
 		
 		acceptor.setDefaultLocalAddress(new InetSocketAddress(port));
 
-//		acceptor.getFilterChain().addLast("logging", new LoggingFilter());
-//        acceptor.getFilterChain().addLast("thread", new ExecutorFilter(100, 150));
         acceptor.getFilterChain().addLast("codec", new ProtocolCodecFilter(new TFrameProtocolCodecFactory()));
 
 		this.acceptor = acceptor;
@@ -45,16 +41,12 @@ public class TIoAcceptorServerTransport extends TServerTransport {
 		try {
 			acceptor.bind();
 		} catch(IOException e) {
-			e.printStackTrace();
 			throw new TTransportException(e);
 		}
 	}
 
 	public void close() {
-		if (!acceptor.isDisposed() && !acceptor.isDisposing()) {
-			acceptor.unbind();
-			acceptor.dispose(false);
-		}
+		acceptor.dispose(false);
 	}
 
 	protected TIoSessionTransport acceptImpl() throws TTransportException {
