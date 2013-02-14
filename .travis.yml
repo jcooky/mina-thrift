@@ -2,6 +2,7 @@ language: java
 jdk:
   - oraclejdk7
 #  - openjdk6
+install: 'mvn -DskipTests=true'
 before_script: './build/before.sh'
 script: 
   - 'mvn -s .m2/settings.xml deploy'
