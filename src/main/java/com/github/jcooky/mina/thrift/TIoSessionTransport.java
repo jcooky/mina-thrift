@@ -1,6 +1,5 @@
 package com.github.jcooky.mina.thrift;
 
-import com.github.jcooky.mina.thrift.message.TMessage;
 import org.apache.mina.core.buffer.IoBuffer;
 import org.apache.mina.core.session.IoSession;
 import org.apache.thrift.transport.TTransport;
@@ -8,6 +7,8 @@ import org.apache.thrift.transport.TTransportException;
 import org.apache.thrift.transport.TTransportFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.github.jcooky.mina.thrift.message.TMessage;
 
 public class TIoSessionTransport extends TTransport {
 	private static final Logger logger = LoggerFactory.getLogger(TIoSessionTransport.class);
@@ -33,7 +34,7 @@ public class TIoSessionTransport extends TTransport {
 
 				public int read(byte[] buf, int off, int len)
 						throws TTransportException {
-                    TMessage message = (TMessage)session.getAttribute(Constants.MESSAGE);
+                    TMessage message = (TMessage)session.getAttribute(TMinaServer.MESSAGE);
                     IoBuffer frame = message.getFrame();
 
 					int readLen = frame.remaining() > len ? len : frame.remaining();
