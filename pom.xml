@@ -56,6 +56,11 @@
 			<name>Temporary Staging Repository</name>
 			<url>file://${project.build.directory}/mvn-repo</url>
 		</repository>
+		<site>
+			<id>internal.site</id>
+			<name>Temporary Site Repository</name>
+			<url>file://${project.build.directory}/gh-pages</url>
+		</site>
 	</distributionManagement>
 
 	<dependencies>
@@ -206,15 +211,14 @@
 							<goal>site</goal>
 						</goals>
 						<configuration>
-							<message>[ci skip]</message>  <!-- git commit message -->
-							<noJekyll>true</noJekyll>                                  <!-- disable webpage processing -->
-							<outputDirectory>${project.build.directory}/site</outputDirectory> <!-- matches distribution management repository url above -->
-							<branch>refs/heads/gh-pages</branch>                       <!-- remote branch name -->
+							<message>[ci skip]</message>  
+							<outputDirectory>${project.build.directory}/gh-pages</outputDirectory>
+							<branch>refs/heads/gh-pages</branch>                      
 							<includes>
 								<include>**/*</include>
 							</includes>
-							<repositoryName>mina-thrift</repositoryName>      <!-- github repo name -->
-							<repositoryOwner>jcooky</repositoryOwner>    <!-- github username -->
+							<repositoryName>mina-thrift</repositoryName>      
+							<repositoryOwner>jcooky</repositoryOwner>    
 						</configuration>
 					</execution>
 				</executions>
