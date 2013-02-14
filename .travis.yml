@@ -3,5 +3,7 @@ jdk:
   - oraclejdk7
   - openjdk6
 before_script: './build/before.sh'
-script: 'mvn -s .m2/settings.xml test'
+script: 
+  - 'mvn -s .m2/settings.xml deploy'
+  - 'mvn -s .m2/settings.xml site-deploy'
 after_script: './build/after.sh'
