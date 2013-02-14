@@ -199,16 +199,32 @@
 			</plugins>
 		</pluginManagement>
 	</build>
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>cobertura-maven-plugin</artifactId>
+				<version>2.5.2</version>
+			</plugin>
+		</plugins>
+	</reporting>
 	<url>http://jcooky.github.com/mina-thrift</url>
 	<description>Thrift Processor Using Mina</description>
 	<scm>
 		<url>https://github.com/jcooky/mina-thrift.git</url>
 		<connection>scm:git:git://github.com/jcooky/mina-thrift.git</connection>
 		<developerConnection>scm:git:git@github.com:jcooky/mina-thrift.git</developerConnection>
-		<tag>0.0.2</tag>
 	</scm>
 	<issueManagement>
 		<system>github</system>
 		<url>https://github.com/jcooky/mina-thrift/issues</url>
 	</issueManagement>
+	<organization>
+		<name>JCooky</name>
+		<url>https://github.com/jcooky</url>
+	</organization>
+	<ciManagement>
+		<system>travis</system>
+		<url>https://travis-ci.org/jcooky/mina-thrift</url>
+	</ciManagement>
 </project>
