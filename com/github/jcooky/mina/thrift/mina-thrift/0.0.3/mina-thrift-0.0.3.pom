@@ -151,23 +151,23 @@
 						<goals>
 							<goal>run</goal>
 						</goals>
+						<configuration>
+							<target>
+								<apply executable="thrift" dir="${basedir}">
+									<arg value="-debug" />
+									<arg value="-out" />
+									<arg value="src/test/java" />
+									<arg value="--gen" />
+									<arg value="java" />
+									<fileset dir="${basedir}/src/test/thrift"
+										casesensitive="yes">
+										<include name="**/*.thrift" />
+									</fileset>
+								</apply>
+							</target>
+						</configuration>
 					</execution>
 				</executions>
-				<configuration>
-					<target>
-						<apply executable="thrift" dir="${basedir}">
-							<arg value="-debug" />
-							<arg value="-out" />
-							<arg value="src/test/java" />
-							<arg value="--gen" />
-							<arg value="java" />
-							<fileset dir="${basedir}/src/test/thrift" casesensitive="yes">
-								<include name="**/*.thrift" />
-							</fileset>
-						</apply>
-					</target>
-
-				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>com.github.github</groupId>
@@ -199,14 +199,14 @@
 							<goal>site</goal>
 						</goals>
 						<configuration>
-							<message>[ci skip]</message>  
+							<message>[ci skip]</message>
 							<outputDirectory>${project.build.directory}/gh-pages</outputDirectory>
-							<branch>refs/heads/gh-pages</branch>                      
+							<branch>refs/heads/gh-pages</branch>
 							<includes>
 								<include>**/*</include>
 							</includes>
-							<repositoryName>mina-thrift</repositoryName>      
-							<repositoryOwner>jcooky</repositoryOwner>    
+							<repositoryName>mina-thrift</repositoryName>
+							<repositoryOwner>jcooky</repositoryOwner>
 						</configuration>
 					</execution>
 				</executions>
