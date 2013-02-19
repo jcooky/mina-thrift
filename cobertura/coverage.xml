@@ -1,30 +1,32 @@
 <?xml version="1.0"?>
 <!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
 
-<coverage line-rate="0.8013245033112583" branch-rate="0.5555555555555556" lines-covered="121" lines-valid="151" branches-covered="10" branches-valid="18" complexity="1.4883720930232558" version="1.9.4.1" timestamp="1360922982433">
+<coverage line-rate="0.8071428571428572" branch-rate="0.55" lines-covered="113" lines-valid="140" branches-covered="11" branches-valid="20" complexity="1.5405405405405406" version="1.9.4.1" timestamp="1361265088494">
 	<sources>
 		<source>/scratch/jenkins/workspace/mina-thrift/src/main/java</source>
 		<source>--source</source>
 	</sources>
 	<packages>
-		<package name="com.github.jcooky.mina.thrift" line-rate="0.75" branch-rate="0.375" complexity="1.3714285714285714">
+		<package name="com.github.jcooky.mina.thrift" line-rate="0.7524752475247525" branch-rate="0.4" complexity="1.4137931034482758">
 			<classes>
-				<class name="com.github.jcooky.mina.thrift.TIoAcceptorServerTransport" filename="com/github/jcooky/mina/thrift/TIoAcceptorServerTransport.java" line-rate="0.7894736842105263" branch-rate="1.0" complexity="1.5">
+				<class name="com.github.jcooky.mina.thrift.TIoAcceptorServerTransport" filename="com/github/jcooky/mina/thrift/TIoAcceptorServerTransport.java" line-rate="0.7058823529411765" branch-rate="0.5" complexity="1.6666666666666667">
 					<methods>
-						<method name="&lt;init&gt;" signature="(I)V" line-rate="1.0" branch-rate="1.0">
+						<method name="&lt;init&gt;" signature="(Lorg/apache/mina/transport/socket/nio/NioSocketAcceptor;)V" line-rate="0.8" branch-rate="0.5">
 							<lines>
-								<line number="20" hits="3" branch="false"/>
-								<line number="22" hits="3" branch="false"/>
-								<line number="23" hits="3" branch="false"/>
+								<line number="21" hits="3" branch="false"/>
+								<line number="22" hits="3" branch="true" condition-coverage="50% (1/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+								<line number="23" hits="0" branch="false"/>
+								<line number="24" hits="3" branch="false"/>
 								<line number="25" hits="3" branch="false"/>
-								<line number="27" hits="3" branch="false"/>
-								<line number="29" hits="3" branch="false"/>
-								<line number="30" hits="3" branch="false"/>
 							</lines>
 						</method>
 						<method name="acceptImpl" signature="()Lcom/github/jcooky/mina/thrift/TIoSessionTransport;" line-rate="0.0" branch-rate="1.0">
 							<lines>
-								<line number="53" hits="0" branch="false"/>
+								<line number="48" hits="0" branch="false"/>
 							</lines>
 						</method>
 						<method name="acceptImpl" signature="()Lorg/apache/thrift/transport/TTransport;" line-rate="0.0" branch-rate="1.0">
@@ -34,54 +36,56 @@
 						</method>
 						<method name="close" signature="()V" line-rate="1.0" branch-rate="1.0">
 							<lines>
-								<line number="49" hits="6" branch="false"/>
-								<line number="50" hits="6" branch="false"/>
+								<line number="44" hits="3" branch="false"/>
+								<line number="45" hits="3" branch="false"/>
 							</lines>
 						</method>
 						<method name="getAcceptor" signature="()Lorg/apache/mina/core/service/IoAcceptor;" line-rate="1.0" branch-rate="1.0">
 							<lines>
-								<line number="33" hits="3" branch="false"/>
+								<line number="28" hits="3" branch="false"/>
 							</lines>
 						</method>
 						<method name="listen" signature="()V" line-rate="0.6" branch-rate="1.0">
 							<lines>
-								<line number="42" hits="3" branch="false"/>
-								<line number="43" hits="0" branch="false"/>
-								<line number="44" hits="0" branch="false"/>
-								<line number="45" hits="3" branch="false"/>
-								<line number="46" hits="3" branch="false"/>
+								<line number="37" hits="3" branch="false"/>
+								<line number="38" hits="0" branch="false"/>
+								<line number="39" hits="0" branch="false"/>
+								<line number="40" hits="3" branch="false"/>
+								<line number="41" hits="3" branch="false"/>
 							</lines>
 						</method>
 						<method name="setHandler" signature="(Lorg/apache/mina/core/service/IoHandler;)V" line-rate="1.0" branch-rate="1.0">
 							<lines>
-								<line number="37" hits="3" branch="false"/>
-								<line number="38" hits="3" branch="false"/>
+								<line number="32" hits="3" branch="false"/>
+								<line number="33" hits="3" branch="false"/>
 							</lines>
 						</method>
 					</methods>
 					<lines>
 						<line number="17" hits="0" branch="false"/>
-						<line number="20" hits="3" branch="false"/>
-						<line number="22" hits="3" branch="false"/>
-						<line number="23" hits="3" branch="false"/>
+						<line number="21" hits="3" branch="false"/>
+						<line number="22" hits="3" branch="true" condition-coverage="50% (1/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="23" hits="0" branch="false"/>
+						<line number="24" hits="3" branch="false"/>
 						<line number="25" hits="3" branch="false"/>
-						<line number="27" hits="3" branch="false"/>
-						<line number="29" hits="3" branch="false"/>
-						<line number="30" hits="3" branch="false"/>
+						<line number="28" hits="3" branch="false"/>
+						<line number="32" hits="3" branch="false"/>
 						<line number="33" hits="3" branch="false"/>
 						<line number="37" hits="3" branch="false"/>
-						<line number="38" hits="3" branch="false"/>
-						<line number="42" hits="3" branch="false"/>
-						<line number="43" hits="0" branch="false"/>
-						<line number="44" hits="0" branch="false"/>
+						<line number="38" hits="0" branch="false"/>
+						<line number="39" hits="0" branch="false"/>
+						<line number="40" hits="3" branch="false"/>
+						<line number="41" hits="3" branch="false"/>
+						<line number="44" hits="3" branch="false"/>
 						<line number="45" hits="3" branch="false"/>
-						<line number="46" hits="3" branch="false"/>
-						<line number="49" hits="6" branch="false"/>
-						<line number="50" hits="6" branch="false"/>
-						<line number="53" hits="0" branch="false"/>
+						<line number="48" hits="0" branch="false"/>
 					</lines>
 				</class>
-				<class name="com.github.jcooky.mina.thrift.TIoSessionTransport" filename="com/github/jcooky/mina/thrift/TIoSessionTransport.java" line-rate="0.5454545454545454" branch-rate="0.0" complexity="1.4615384615384615">
+				<class name="com.github.jcooky.mina.thrift.TIoSessionTransport" filename="com/github/jcooky/mina/thrift/TIoSessionTransport.java" line-rate="0.6153846153846154" branch-rate="0.3333333333333333" complexity="1.5714285714285714">
 					<methods>
 						<method name="&lt;clinit&gt;" signature="()V" line-rate="1.0" branch-rate="1.0">
 							<lines>
@@ -90,165 +94,103 @@
 						</method>
 						<method name="&lt;init&gt;" signature="(Lorg/apache/mina/core/session/IoSession;)V" line-rate="1.0" branch-rate="1.0">
 							<lines>
-								<line number="56" hits="3" branch="false"/>
-								<line number="57" hits="3" branch="false"/>
-								<line number="58" hits="3" branch="false"/>
+								<line number="18" hits="3" branch="false"/>
+								<line number="19" hits="3" branch="false"/>
+								<line number="20" hits="3" branch="false"/>
 							</lines>
 						</method>
 						<method name="close" signature="()V" line-rate="0.0" branch-rate="0.0">
 							<lines>
-								<line number="72" hits="0" branch="true" condition-coverage="0% (0/4)">
+								<line number="34" hits="0" branch="true" condition-coverage="0% (0/4)">
 									<conditions>
 										<condition number="0" type="jump" coverage="0%"/>
 										<condition number="1" type="jump" coverage="0%"/>
 									</conditions>
 								</line>
-								<line number="74" hits="0" branch="false"/>
-								<line number="75" hits="0" branch="false"/>
-								<line number="76" hits="0" branch="false"/>
-								<line number="77" hits="0" branch="false"/>
-								<line number="78" hits="0" branch="false"/>
-								<line number="80" hits="0" branch="false"/>
+								<line number="36" hits="0" branch="false"/>
+								<line number="37" hits="0" branch="false"/>
+								<line number="38" hits="0" branch="false"/>
+								<line number="39" hits="0" branch="false"/>
+								<line number="40" hits="0" branch="false"/>
+								<line number="42" hits="0" branch="false"/>
 							</lines>
 						</method>
-						<method name="getSession" signature="()Lorg/apache/mina/core/session/IoSession;" line-rate="1.0" branch-rate="1.0">
+						<method name="getSession" signature="()Lorg/apache/mina/core/session/IoSession;" line-rate="0.0" branch-rate="1.0">
 							<lines>
-								<line number="61" hits="3" branch="false"/>
+								<line number="23" hits="0" branch="false"/>
 							</lines>
 						</method>
 						<method name="isOpen" signature="()Z" line-rate="0.0" branch-rate="1.0">
 							<lines>
-								<line number="65" hits="0" branch="false"/>
+								<line number="27" hits="0" branch="false"/>
 							</lines>
 						</method>
 						<method name="open" signature="()V" line-rate="0.0" branch-rate="1.0">
 							<lines>
-								<line number="69" hits="0" branch="false"/>
+								<line number="31" hits="0" branch="false"/>
 							</lines>
 						</method>
-						<method name="read" signature="([BII)I" line-rate="0.0" branch-rate="1.0">
+						<method name="read" signature="([BII)I" line-rate="1.0" branch-rate="1.0">
 							<lines>
-								<line number="83" hits="0" branch="false"/>
+								<line number="45" hits="24" branch="false"/>
+								<line number="46" hits="24" branch="false"/>
+								<line number="48" hits="24" branch="true" condition-coverage="100% (2/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="100%"/>
+									</conditions>
+								</line>
+								<line number="49" hits="24" branch="false"/>
+								<line number="51" hits="24" branch="false"/>
 							</lines>
 						</method>
 						<method name="write" signature="([BII)V" line-rate="1.0" branch-rate="1.0">
 							<lines>
-								<line number="87" hits="26" branch="false"/>
-								<line number="89" hits="26" branch="false"/>
-								<line number="90" hits="26" branch="false"/>
-								<line number="91" hits="26" branch="false"/>
-								<line number="92" hits="26" branch="false"/>
-								<line number="93" hits="26" branch="false"/>
-								<line number="94" hits="26" branch="false"/>
+								<line number="55" hits="26" branch="false"/>
+								<line number="57" hits="26" branch="false"/>
+								<line number="58" hits="26" branch="false"/>
+								<line number="59" hits="26" branch="false"/>
+								<line number="60" hits="26" branch="false"/>
+								<line number="61" hits="26" branch="false"/>
+								<line number="62" hits="26" branch="false"/>
 							</lines>
 						</method>
 					</methods>
 					<lines>
 						<line number="14" hits="1" branch="false"/>
-						<line number="56" hits="3" branch="false"/>
-						<line number="57" hits="3" branch="false"/>
-						<line number="58" hits="3" branch="false"/>
-						<line number="61" hits="3" branch="false"/>
-						<line number="65" hits="0" branch="false"/>
-						<line number="69" hits="0" branch="false"/>
-						<line number="72" hits="0" branch="true" condition-coverage="0% (0/4)">
+						<line number="18" hits="3" branch="false"/>
+						<line number="19" hits="3" branch="false"/>
+						<line number="20" hits="3" branch="false"/>
+						<line number="23" hits="0" branch="false"/>
+						<line number="27" hits="0" branch="false"/>
+						<line number="31" hits="0" branch="false"/>
+						<line number="34" hits="0" branch="true" condition-coverage="0% (0/4)">
 							<conditions>
 								<condition number="0" type="jump" coverage="0%"/>
 								<condition number="1" type="jump" coverage="0%"/>
 							</conditions>
 						</line>
-						<line number="74" hits="0" branch="false"/>
-						<line number="75" hits="0" branch="false"/>
-						<line number="76" hits="0" branch="false"/>
-						<line number="77" hits="0" branch="false"/>
-						<line number="78" hits="0" branch="false"/>
-						<line number="80" hits="0" branch="false"/>
-						<line number="83" hits="0" branch="false"/>
-						<line number="87" hits="26" branch="false"/>
-						<line number="89" hits="26" branch="false"/>
-						<line number="90" hits="26" branch="false"/>
-						<line number="91" hits="26" branch="false"/>
-						<line number="92" hits="26" branch="false"/>
-						<line number="93" hits="26" branch="false"/>
-						<line number="94" hits="26" branch="false"/>
-					</lines>
-				</class>
-				<class name="com.github.jcooky.mina.thrift.TIoSessionTransport$InputTransportFactory" filename="com/github/jcooky/mina/thrift/TIoSessionTransport.java" line-rate="1.0" branch-rate="1.0" complexity="1.4615384615384615">
-					<methods>
-						<method name="&lt;init&gt;" signature="()V" line-rate="1.0" branch-rate="1.0">
-							<lines>
-								<line number="18" hits="3" branch="false"/>
-							</lines>
-						</method>
-						<method name="getTransport" signature="(Lorg/apache/thrift/transport/TTransport;)Lorg/apache/thrift/transport/TTransport;" line-rate="1.0" branch-rate="1.0">
-							<lines>
-								<line number="21" hits="3" branch="false"/>
-								<line number="23" hits="3" branch="false"/>
-							</lines>
-						</method>
-					</methods>
-					<lines>
-						<line number="18" hits="3" branch="false"/>
-						<line number="21" hits="3" branch="false"/>
-						<line number="23" hits="3" branch="false"/>
-					</lines>
-				</class>
-				<class name="com.github.jcooky.mina.thrift.TIoSessionTransport$InputTransportFactory$1" filename="com/github/jcooky/mina/thrift/TIoSessionTransport.java" line-rate="0.6" branch-rate="1.0" complexity="1.4615384615384615">
-					<methods>
-						<method name="&lt;init&gt;" signature="(Lcom/github/jcooky/mina/thrift/TIoSessionTransport$InputTransportFactory;Lorg/apache/mina/core/session/IoSession;)V" line-rate="1.0" branch-rate="1.0">
-							<lines>
-								<line number="23" hits="3" branch="false"/>
-							</lines>
-						</method>
-						<method name="close" signature="()V" line-rate="0.0" branch-rate="1.0">
-							<lines>
-								<line number="33" hits="0" branch="false"/>
-							</lines>
-						</method>
-						<method name="isOpen" signature="()Z" line-rate="0.0" branch-rate="1.0">
-							<lines>
-								<line number="26" hits="0" branch="false"/>
-							</lines>
-						</method>
-						<method name="open" signature="()V" line-rate="0.0" branch-rate="1.0">
-							<lines>
-								<line number="30" hits="0" branch="false"/>
-							</lines>
-						</method>
-						<method name="read" signature="([BII)I" line-rate="1.0" branch-rate="1.0">
-							<lines>
-								<line number="37" hits="24" branch="false"/>
-								<line number="38" hits="24" branch="false"/>
-								<line number="40" hits="24" branch="true" condition-coverage="100% (2/2)">
-									<conditions>
-										<condition number="0" type="jump" coverage="100%"/>
-									</conditions>
-								</line>
-								<line number="41" hits="24" branch="false"/>
-								<line number="43" hits="24" branch="false"/>
-							</lines>
-						</method>
-						<method name="write" signature="([BII)V" line-rate="0.0" branch-rate="1.0">
-							<lines>
-								<line number="48" hits="0" branch="false"/>
-							</lines>
-						</method>
-					</methods>
-					<lines>
-						<line number="23" hits="3" branch="false"/>
-						<line number="26" hits="0" branch="false"/>
-						<line number="30" hits="0" branch="false"/>
-						<line number="33" hits="0" branch="false"/>
-						<line number="37" hits="24" branch="false"/>
-						<line number="38" hits="24" branch="false"/>
-						<line number="40" hits="24" branch="true" condition-coverage="100% (2/2)">
+						<line number="36" hits="0" branch="false"/>
+						<line number="37" hits="0" branch="false"/>
+						<line number="38" hits="0" branch="false"/>
+						<line number="39" hits="0" branch="false"/>
+						<line number="40" hits="0" branch="false"/>
+						<line number="42" hits="0" branch="false"/>
+						<line number="45" hits="24" branch="false"/>
+						<line number="46" hits="24" branch="false"/>
+						<line number="48" hits="24" branch="true" condition-coverage="100% (2/2)">
 							<conditions>
 								<condition number="0" type="jump" coverage="100%"/>
 							</conditions>
 						</line>
-						<line number="41" hits="24" branch="false"/>
-						<line number="43" hits="24" branch="false"/>
-						<line number="48" hits="0" branch="false"/>
+						<line number="49" hits="24" branch="false"/>
+						<line number="51" hits="24" branch="false"/>
+						<line number="55" hits="26" branch="false"/>
+						<line number="57" hits="26" branch="false"/>
+						<line number="58" hits="26" branch="false"/>
+						<line number="59" hits="26" branch="false"/>
+						<line number="60" hits="26" branch="false"/>
+						<line number="61" hits="26" branch="false"/>
+						<line number="62" hits="26" branch="false"/>
 					</lines>
 				</class>
 				<class name="com.github.jcooky.mina.thrift.TMinaServer" filename="com/github/jcooky/mina/thrift/TMinaServer.java" line-rate="0.8947368421052632" branch-rate="1.0" complexity="1.25">
