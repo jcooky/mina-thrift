@@ -15,24 +15,19 @@ import java.io.IOException;
 import java.net.InetSocketAddress;
 
 public class TIoAcceptorServerTransport extends TServerTransport {
+	public final static String CODEC_NAME = "mina-thrift-codec";
 	private IoAcceptor acceptor;
-	
-	public TIoAcceptorServerTransport(int port) {
-		NioSocketAcceptor acceptor ;
-		acceptor = new NioSocketAcceptor(Runtime.getRuntime().availableProcessors() + 1);
-		acceptor.setReuseAddress(true);
-		
-		acceptor.setDefaultLocalAddress(new InetSocketAddress(port));
 
-        acceptor.getFilterChain().addLast("codec", new ProtocolCodecFilter(new TFrameProtocolCodecFactory()));
-
+	public TIoAcceptorServerTransport(NioSocketAcceptor acceptor) {
+		if (!acceptor.getFilterChain().contains(CODEC_NAME))
+			acceptor.getFilterChain().addLast(CODEC_NAME, new ProtocolCodecFilter(new TFrameProtocolCodecFactory()));
 		this.acceptor = acceptor;
 	}
-	
+
 	public IoAcceptor getAcceptor() {
 		return acceptor;
 	}
-	
+
 	public void setHandler(IoHandler handler) {
 		acceptor.setHandler(handler);
 	}
@@ -40,7 +35,7 @@ public class TIoAcceptorServerTransport extends TServerTransport {
 	public void listen() throws TTransportException {
 		try {
 			acceptor.bind();
-		} catch(IOException e) {
+		} catch (IOException e) {
 			throw new TTransportException(e);
 		}
 	}

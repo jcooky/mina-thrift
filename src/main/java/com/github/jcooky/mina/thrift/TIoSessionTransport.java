@@ -12,55 +12,17 @@ import com.github.jcooky.mina.thrift.message.TMessage;
 
 public class TIoSessionTransport extends TTransport {
 	private static final Logger logger = LoggerFactory.getLogger(TIoSessionTransport.class);
-	
+
 	private IoSession session;
-	
-	public static class InputTransportFactory extends TTransportFactory {
 
-		public TTransport getTransport(final TTransport trans) {
-            final IoSession session = ((TIoSessionTransport)trans).getSession();
-			
-			return new TTransport() {
-				
-				public boolean isOpen() {
-					return true;
-				}
-
-				public void open() throws TTransportException {
-				}
-
-				public void close() {
-				}
-
-				public int read(byte[] buf, int off, int len)
-						throws TTransportException {
-                    TMessage message = (TMessage)session.getAttribute(TMinaServer.MESSAGE);
-                    IoBuffer frame = message.getFrame();
-
-					int readLen = frame.remaining() > len ? len : frame.remaining();
-					frame.get(buf, off, readLen);
-					
-					return readLen;
-				}
-
-				public void write(byte[] buf, int off, int len)
-						throws TTransportException {
-					throw new UnsupportedOperationException();
-				}
-				
-			};
-		}
-		
-	}
-	
 	public TIoSessionTransport(IoSession session) {
 		this.session = session;
 	}
-	
+
 	public IoSession getSession() {
 		return session;
 	}
-	
+
 	public boolean isOpen() {
 		return session.isConnected();
 	}
@@ -72,7 +34,7 @@ public class TIoSessionTransport extends TTransport {
 		if (session.isConnected() && !session.isClosing()) {
 			try {
 				flush();
-			} catch(TTransportException e) {
+			} catch (TTransportException e) {
 				logger.error(e.getMessage(), e);
 			}
 			session.close(false);
@@ -80,7 +42,13 @@ public class TIoSessionTransport extends TTransport {
 	}
 
 	public int read(byte[] buf, int off, int len) throws TTransportException {
-		throw new UnsupportedOperationException();
+		TMessage message = (TMessage) session.getAttribute(TMinaServer.MESSAGE);
+		IoBuffer frame = message.getFrame();
+
+		int readLen = frame.remaining() > len ? len : frame.remaining();
+		frame.get(buf, off, readLen);
+
+		return readLen;
 	}
 
 	public void write(byte[] buf, int off, int len) throws TTransportException {
@@ -92,6 +60,5 @@ public class TIoSessionTransport extends TTransport {
 		session.write(new TMessage(len, buffer));
 		buffer.free();
 	}
-
 
 }
