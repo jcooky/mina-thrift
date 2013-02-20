@@ -34,12 +34,12 @@ public class CourseServiceTest {
 		when(mockCourseService.getCourse(any(String.class))).thenThrow(new TApplicationException("Test"));
 
 		serverTestRule = new TMinaServerTestRule(new CourseService.Processor<CourseService.Iface>(mockCourseService));
-		serverTestRule.starting();
+		serverTestRule.setUp();
 	}
 	
 	@After
 	public void tearDown() throws Exception {
-		serverTestRule.finished();
+		serverTestRule.tearDown();
 	}
 
 	@Test

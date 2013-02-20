@@ -35,12 +35,12 @@ public class GatewayTest {
     	gwService = mock(Gateway.Iface.class);
     	
     	minaServerTestRule = new TMinaServerTestRule(new Gateway.Processor<Gateway.Iface>(gwService));
-    	minaServerTestRule.starting();
+    	minaServerTestRule.setUp();
     }
     
     @After
     public void tearDown() throws Exception {
-    	minaServerTestRule.finished();
+    	minaServerTestRule.tearDown();
     }
 
 	@Test(timeout=1000)

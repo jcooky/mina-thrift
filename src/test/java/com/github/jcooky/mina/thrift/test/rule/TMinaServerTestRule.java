@@ -39,7 +39,7 @@ public class TMinaServerTestRule {
 		return clientProtocol;
 	}
 
-	public void starting() throws Exception {
+	public void setUp() throws Exception {
 		logger.info("test log");
 
 		NioSocketAcceptor acceptor;
@@ -53,11 +53,7 @@ public class TMinaServerTestRule {
 		server = new TMinaServer(new TMinaServer.Args(new TIoAcceptorServerTransport(acceptor)).processor(processor)
 				.protocolFactory(new TCompactProtocol.Factory()).transportFactory(new TTransportFactory()));
 
-		// new Thread() {
-		// public void run() {
 		server.serve();
-		// }
-		// }.start();
 
 		clientSocket = new TSocket("localhost", PORT, SOCKET_TIMEOUT);
 		clientSocket = new TFramedTransport(clientSocket);
@@ -65,7 +61,7 @@ public class TMinaServerTestRule {
 		clientSocket.open();
 	}
 
-	public void finished() throws Exception {
+	public void tearDown() throws Exception {
 		clientSocket.close();
 		server.stop();
 	}

@@ -14,7 +14,7 @@ import org.junit.rules.TestRule;
 import org.junit.runner.Description;
 import org.junit.runners.model.Statement;
 
-public class ThriftServerTestRule implements TestRule {
+public class ThriftServerTestRule {
 	public static final int PORT = 9090;
 	public static final int SOCKET_TIMEOUT = 1000;
 
@@ -33,22 +33,7 @@ public class ThriftServerTestRule implements TestRule {
         return clientProtocol;
     }
 
-    @Override
-    public Statement apply(final Statement base, Description desc) {
-
-        return new Statement() {
-            public void evaluate() throws Throwable {
-                init();
-                try {
-                    base.evaluate();
-                } finally {
-                    close();
-                }
-            }
-        };
-    }
-
-	public void init() throws Exception {
+	public void setUp() throws Exception {
 		serverSocket = new TNonblockingServerSocket(PORT);
 		server = new THsHaServer(new Args(serverSocket)
 												.processor(processor)
@@ -70,7 +55,7 @@ public class ThriftServerTestRule implements TestRule {
         clientTransport.open();
 	}
 
-	public void close() {
+	public void tearDown() {
         clientTransport.close();
 		server.stop();
 		serverSocket.close();
