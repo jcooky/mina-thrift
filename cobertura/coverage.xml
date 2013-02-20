@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
 
-<coverage line-rate="0.8071428571428572" branch-rate="0.55" lines-covered="113" lines-valid="140" branches-covered="11" branches-valid="20" complexity="1.5405405405405406" version="1.9.4.1" timestamp="1361265088494">
+<coverage line-rate="0.8071428571428572" branch-rate="0.55" lines-covered="113" lines-valid="140" branches-covered="11" branches-valid="20" complexity="1.5405405405405406" version="1.9.4.1" timestamp="1361351410489">
 	<sources>
 		<source>/scratch/jenkins/workspace/mina-thrift/src/main/java</source>
 		<source>--source</source>
