@@ -43,7 +43,6 @@ public class GatewayTest {
     	minaServerTestRule.tearDown();
     }
 
-	@Test(timeout=1000)
 	public void testThriftServer() throws Exception {
 		TProtocol protocol = minaServerTestRule.getClientProtocol();
 		assertNotNull(protocol);
