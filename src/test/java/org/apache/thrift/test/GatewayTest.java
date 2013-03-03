@@ -1,21 +1,23 @@
 package org.apache.thrift.test;
 
-import com.github.jcooky.mina.thrift.test.rule.ThriftServerTestRule;
-import org.apache.commons.io.FileUtils;
-import org.apache.thrift.test.gen.Gateway;
-import org.apache.thrift.test.gen.InvalidExcuteException;
-import org.junit.Before;
-import org.junit.Rule;
-import org.junit.Test;
+import static org.junit.Assert.assertFalse;
+import static org.mockito.Mockito.verify;
 
 import java.io.File;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.junit.Assert.*;
+import org.apache.commons.io.FileUtils;
+import org.apache.thrift.test.gen.Gateway;
+import org.apache.thrift.test.gen.InvalidExcuteException;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+
+import com.github.jcooky.mina.thrift.test.rule.ThriftServerTestRule;
 
 /**
  * Created with IntelliJ IDEA.
@@ -25,14 +27,20 @@ import static org.junit.Assert.*;
  * To change this template use File | Settings | File Templates.
  */
 public class GatewayTest {
-    private Gateway.Iface gwService = mock(Gateway.Iface.class);
+    private @Mock Gateway.Iface gwService ;
 
-    @Rule
-    public ThriftServerTestRule thriftServerTestRule = new ThriftServerTestRule(new Gateway.Processor(gwService));
+    public ThriftServerTestRule thriftServerTestRule ;
 
     @Before
     public void setUp() throws Exception {
-
+    	MockitoAnnotations.initMocks(this);
+    	thriftServerTestRule = new ThriftServerTestRule(new Gateway.Processor(gwService));
+    	thriftServerTestRule.setUp();
+    }
+    
+    @After
+    public void tearDown() throws Exception {
+    	thriftServerTestRule.tearDown();
     }
 
     @Test

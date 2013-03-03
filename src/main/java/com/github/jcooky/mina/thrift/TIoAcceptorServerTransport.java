@@ -37,7 +37,7 @@ public class TIoAcceptorServerTransport extends TServerTransport {
 	}
 
 	public void close() {
-		acceptor.dispose(false);
+		acceptor.dispose(true);
 	}
 
 	protected TIoSessionTransport acceptImpl() throws TTransportException {
