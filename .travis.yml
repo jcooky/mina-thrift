@@ -3,8 +3,8 @@ jdk:
   - oraclejdk7
 #  - openjdk6
 install: 'mvn -DskipTests=true'
-before_script: './build/before.sh'
+before_script: 'build/before.sh'
 script: 
-  - 'mvn -s .m2/settings.xml deploy'
-  - 'mvn -s .m2/settings.xml site-deploy'
-after_script: './build/after.sh'
+  - 'mvn deploy'
+  - 'mvn site-deploy'
+after_script: 'build/after.sh'
