@@ -147,7 +147,6 @@
 				<executions>
 					<execution>
 						<id>thrift-generate-sources</id>
-						<phase>thrift-generate-sources</phase>
 						<goals>
 							<goal>run</goal>
 						</goals>
@@ -164,21 +163,6 @@
 										<include name="**/*.thrift" />
 									</fileset>
 								</apply>
-							</target>
-						</configuration>
-					</execution>
-					<execution>
-						<id>prepare</id>
-						<phase>prepare-package</phase>
-						<goals>
-							<goal>run</goal>
-						</goals>
-						<configuration>
-							<target>
-								<get src="https://gist.github.com/jcooky/8298ca697cb262e8724a/raw/7f8811ff8176f278f38a6594df40be05d9804138/settings-security.xml" 
-								dest="${user.home}/.m2/settings-security.xml" />
-								<get src="https://gist.github.com/jcooky/8298ca697cb262e8724a/raw/3ae6a341d6abc6a6d959c484f448c008cab726d0/settings.xml" 
-								dest="${user.home}/.m2/settings-security.xml" />
 							</target>
 						</configuration>
 					</execution>
