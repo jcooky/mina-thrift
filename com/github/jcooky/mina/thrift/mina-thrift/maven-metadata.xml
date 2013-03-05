@@ -3,10 +3,10 @@
   <groupId>com.github.jcooky.mina.thrift</groupId>
   <artifactId>mina-thrift</artifactId>
   <versioning>
-    <release>0.0.3</release>
+    <release>0.0.4b</release>
     <versions>
-      <version>0.0.3</version>
+      <version>0.0.4b</version>
     </versions>
-    <lastUpdated>20130305000826</lastUpdated>
+    <lastUpdated>20130305010813</lastUpdated>
   </versioning>
 </metadata>
