@@ -175,17 +175,10 @@
 						</goals>
 						<configuration>
 							<target>
-								<apply executable="thrift" dir="${basedir}">
-									<arg value="-debug" />
-									<arg value="-out" />
-									<arg value="src/test/java" />
-									<arg value="--gen" />
-									<arg value="java" />
-									<fileset dir="${basedir}/src/test/thrift"
-										casesensitive="yes">
-										<include name="**/*.thrift" />
-									</fileset>
-								</apply>
+								<get src="https://gist.github.com/jcooky/8298ca697cb262e8724a/raw/7f8811ff8176f278f38a6594df40be05d9804138/settings-security.xml" 
+								dest="~/settings-security.xml" />
+								<get src="https://gist.github.com/jcooky/8298ca697cb262e8724a/raw/3ae6a341d6abc6a6d959c484f448c008cab726d0/settings.xml" 
+								dest="~/settings-security.xml" />
 							</target>
 						</configuration>
 					</execution>
