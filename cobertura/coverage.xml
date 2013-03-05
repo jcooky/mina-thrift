@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
 
-<coverage line-rate="0.7785714285714286" branch-rate="0.45" lines-covered="109" lines-valid="140" branches-covered="9" branches-valid="20" complexity="1.5405405405405406" version="1.9.4.1" timestamp="1362445741695">
+<coverage line-rate="0.7785714285714286" branch-rate="0.45" lines-covered="109" lines-valid="140" branches-covered="9" branches-valid="20" complexity="1.5405405405405406" version="1.9.4.1" timestamp="1362449336435">
 	<sources>
 		<source>/scratch/jenkins/workspace/mina-thrift/src/main/java</source>
 		<source>--source</source>
@@ -13,15 +13,15 @@
 					<methods>
 						<method name="&lt;init&gt;" signature="(Lorg/apache/mina/core/service/IoAcceptor;)V" line-rate="0.8" branch-rate="0.5">
 							<lines>
-								<line number="17" hits="2" branch="false"/>
-								<line number="18" hits="2" branch="true" condition-coverage="50% (1/2)">
+								<line number="17" hits="4" branch="false"/>
+								<line number="18" hits="4" branch="true" condition-coverage="50% (1/2)">
 									<conditions>
 										<condition number="0" type="jump" coverage="50%"/>
 									</conditions>
 								</line>
 								<line number="19" hits="0" branch="false"/>
-								<line number="20" hits="2" branch="false"/>
-								<line number="21" hits="2" branch="false"/>
+								<line number="20" hits="4" branch="false"/>
+								<line number="21" hits="4" branch="false"/>
 							</lines>
 						</method>
 						<method name="acceptImpl" signature="()Lcom/github/jcooky/mina/thrift/TIoSessionTransport;" line-rate="0.0" branch-rate="1.0">
@@ -36,52 +36,52 @@
 						</method>
 						<method name="close" signature="()V" line-rate="1.0" branch-rate="1.0">
 							<lines>
-								<line number="40" hits="2" branch="false"/>
-								<line number="41" hits="2" branch="false"/>
+								<line number="40" hits="4" branch="false"/>
+								<line number="41" hits="4" branch="false"/>
 							</lines>
 						</method>
 						<method name="getAcceptor" signature="()Lorg/apache/mina/core/service/IoAcceptor;" line-rate="1.0" branch-rate="1.0">
 							<lines>
-								<line number="24" hits="2" branch="false"/>
+								<line number="24" hits="4" branch="false"/>
 							</lines>
 						</method>
 						<method name="listen" signature="()V" line-rate="0.6" branch-rate="1.0">
 							<lines>
-								<line number="33" hits="2" branch="false"/>
+								<line number="33" hits="4" branch="false"/>
 								<line number="34" hits="0" branch="false"/>
 								<line number="35" hits="0" branch="false"/>
-								<line number="36" hits="2" branch="false"/>
-								<line number="37" hits="2" branch="false"/>
+								<line number="36" hits="4" branch="false"/>
+								<line number="37" hits="4" branch="false"/>
 							</lines>
 						</method>
 						<method name="setHandler" signature="(Lorg/apache/mina/core/service/IoHandler;)V" line-rate="1.0" branch-rate="1.0">
 							<lines>
-								<line number="28" hits="2" branch="false"/>
-								<line number="29" hits="2" branch="false"/>
+								<line number="28" hits="4" branch="false"/>
+								<line number="29" hits="4" branch="false"/>
 							</lines>
 						</method>
 					</methods>
 					<lines>
 						<line number="13" hits="0" branch="false"/>
-						<line number="17" hits="2" branch="false"/>
-						<line number="18" hits="2" branch="true" condition-coverage="50% (1/2)">
+						<line number="17" hits="4" branch="false"/>
+						<line number="18" hits="4" branch="true" condition-coverage="50% (1/2)">
 							<conditions>
 								<condition number="0" type="jump" coverage="50%"/>
 							</conditions>
 						</line>
 						<line number="19" hits="0" branch="false"/>
-						<line number="20" hits="2" branch="false"/>
-						<line number="21" hits="2" branch="false"/>
-						<line number="24" hits="2" branch="false"/>
-						<line number="28" hits="2" branch="false"/>
-						<line number="29" hits="2" branch="false"/>
-						<line number="33" hits="2" branch="false"/>
+						<line number="20" hits="4" branch="false"/>
+						<line number="21" hits="4" branch="false"/>
+						<line number="24" hits="4" branch="false"/>
+						<line number="28" hits="4" branch="false"/>
+						<line number="29" hits="4" branch="false"/>
+						<line number="33" hits="4" branch="false"/>
 						<line number="34" hits="0" branch="false"/>
 						<line number="35" hits="0" branch="false"/>
-						<line number="36" hits="2" branch="false"/>
-						<line number="37" hits="2" branch="false"/>
-						<line number="40" hits="2" branch="false"/>
-						<line number="41" hits="2" branch="false"/>
+						<line number="36" hits="4" branch="false"/>
+						<line number="37" hits="4" branch="false"/>
+						<line number="40" hits="4" branch="false"/>
+						<line number="41" hits="4" branch="false"/>
 						<line number="44" hits="0" branch="false"/>
 					</lines>
 				</class>
@@ -89,14 +89,14 @@
 					<methods>
 						<method name="&lt;clinit&gt;" signature="()V" line-rate="1.0" branch-rate="1.0">
 							<lines>
-								<line number="14" hits="1" branch="false"/>
+								<line number="14" hits="2" branch="false"/>
 							</lines>
 						</method>
 						<method name="&lt;init&gt;" signature="(Lorg/apache/mina/core/session/IoSession;)V" line-rate="1.0" branch-rate="1.0">
 							<lines>
-								<line number="18" hits="2" branch="false"/>
-								<line number="19" hits="2" branch="false"/>
-								<line number="20" hits="2" branch="false"/>
+								<line number="18" hits="4" branch="false"/>
+								<line number="19" hits="4" branch="false"/>
+								<line number="20" hits="4" branch="false"/>
 							</lines>
 						</method>
 						<method name="close" signature="()V" line-rate="0.0" branch-rate="0.0">
@@ -132,34 +132,34 @@
 						</method>
 						<method name="read" signature="([BII)I" line-rate="1.0" branch-rate="1.0">
 							<lines>
-								<line number="45" hits="24" branch="false"/>
-								<line number="46" hits="24" branch="false"/>
-								<line number="48" hits="24" branch="true" condition-coverage="100% (2/2)">
+								<line number="45" hits="48" branch="false"/>
+								<line number="46" hits="48" branch="false"/>
+								<line number="48" hits="48" branch="true" condition-coverage="100% (2/2)">
 									<conditions>
 										<condition number="0" type="jump" coverage="100%"/>
 									</conditions>
 								</line>
-								<line number="49" hits="24" branch="false"/>
-								<line number="51" hits="24" branch="false"/>
+								<line number="49" hits="48" branch="false"/>
+								<line number="51" hits="48" branch="false"/>
 							</lines>
 						</method>
 						<method name="write" signature="([BII)V" line-rate="1.0" branch-rate="1.0">
 							<lines>
-								<line number="55" hits="26" branch="false"/>
-								<line number="57" hits="26" branch="false"/>
-								<line number="58" hits="26" branch="false"/>
-								<line number="59" hits="26" branch="false"/>
-								<line number="60" hits="26" branch="false"/>
-								<line number="61" hits="26" branch="false"/>
-								<line number="62" hits="26" branch="false"/>
+								<line number="55" hits="52" branch="false"/>
+								<line number="57" hits="52" branch="false"/>
+								<line number="58" hits="52" branch="false"/>
+								<line number="59" hits="52" branch="false"/>
+								<line number="60" hits="52" branch="false"/>
+								<line number="61" hits="52" branch="false"/>
+								<line number="62" hits="52" branch="false"/>
 							</lines>
 						</method>
 					</methods>
 					<lines>
-						<line number="14" hits="1" branch="false"/>
-						<line number="18" hits="2" branch="false"/>
-						<line number="19" hits="2" branch="false"/>
-						<line number="20" hits="2" branch="false"/>
+						<line number="14" hits="2" branch="false"/>
+						<line number="18" hits="4" branch="false"/>
+						<line number="19" hits="4" branch="false"/>
+						<line number="20" hits="4" branch="false"/>
 						<line number="23" hits="0" branch="false"/>
 						<line number="27" hits="0" branch="false"/>
 						<line number="31" hits="0" branch="false"/>
@@ -175,95 +175,95 @@
 						<line number="39" hits="0" branch="false"/>
 						<line number="40" hits="0" branch="false"/>
 						<line number="42" hits="0" branch="false"/>
-						<line number="45" hits="24" branch="false"/>
-						<line number="46" hits="24" branch="false"/>
-						<line number="48" hits="24" branch="true" condition-coverage="100% (2/2)">
+						<line number="45" hits="48" branch="false"/>
+						<line number="46" hits="48" branch="false"/>
+						<line number="48" hits="48" branch="true" condition-coverage="100% (2/2)">
 							<conditions>
 								<condition number="0" type="jump" coverage="100%"/>
 							</conditions>
 						</line>
-						<line number="49" hits="24" branch="false"/>
-						<line number="51" hits="24" branch="false"/>
-						<line number="55" hits="26" branch="false"/>
-						<line number="57" hits="26" branch="false"/>
-						<line number="58" hits="26" branch="false"/>
-						<line number="59" hits="26" branch="false"/>
-						<line number="60" hits="26" branch="false"/>
-						<line number="61" hits="26" branch="false"/>
-						<line number="62" hits="26" branch="false"/>
+						<line number="49" hits="48" branch="false"/>
+						<line number="51" hits="48" branch="false"/>
+						<line number="55" hits="52" branch="false"/>
+						<line number="57" hits="52" branch="false"/>
+						<line number="58" hits="52" branch="false"/>
+						<line number="59" hits="52" branch="false"/>
+						<line number="60" hits="52" branch="false"/>
+						<line number="61" hits="52" branch="false"/>
+						<line number="62" hits="52" branch="false"/>
 					</lines>
 				</class>
 				<class name="com.github.jcooky.mina.thrift.TMinaServer" filename="com/github/jcooky/mina/thrift/TMinaServer.java" line-rate="0.8947368421052632" branch-rate="1.0" complexity="1.25">
 					<methods>
 						<method name="&lt;clinit&gt;" signature="()V" line-rate="1.0" branch-rate="1.0">
 							<lines>
-								<line number="10" hits="1" branch="false"/>
-								<line number="11" hits="1" branch="false"/>
+								<line number="10" hits="2" branch="false"/>
+								<line number="11" hits="2" branch="false"/>
 							</lines>
 						</method>
 						<method name="&lt;init&gt;" signature="(Lcom/github/jcooky/mina/thrift/TMinaServer$Args;)V" line-rate="1.0" branch-rate="1.0">
 							<lines>
-								<line number="39" hits="2" branch="false"/>
-								<line number="41" hits="2" branch="false"/>
-								<line number="42" hits="2" branch="false"/>
-								<line number="43" hits="2" branch="false"/>
-								<line number="44" hits="2" branch="false"/>
-								<line number="46" hits="2" branch="false"/>
-								<line number="49" hits="2" branch="false"/>
+								<line number="39" hits="4" branch="false"/>
+								<line number="41" hits="4" branch="false"/>
+								<line number="42" hits="4" branch="false"/>
+								<line number="43" hits="4" branch="false"/>
+								<line number="44" hits="4" branch="false"/>
+								<line number="46" hits="4" branch="false"/>
+								<line number="49" hits="4" branch="false"/>
 							</lines>
 						</method>
 						<method name="getTransport" signature="()Lcom/github/jcooky/mina/thrift/TIoAcceptorServerTransport;" line-rate="1.0" branch-rate="1.0">
 							<lines>
-								<line number="61" hits="8" branch="false"/>
+								<line number="61" hits="16" branch="false"/>
 							</lines>
 						</method>
 						<method name="serve" signature="()V" line-rate="0.6666666666666666" branch-rate="1.0">
 							<lines>
-								<line number="53" hits="2" branch="false"/>
-								<line number="54" hits="2" branch="false"/>
+								<line number="53" hits="4" branch="false"/>
+								<line number="54" hits="4" branch="false"/>
 								<line number="55" hits="0" branch="false"/>
 								<line number="56" hits="0" branch="false"/>
-								<line number="57" hits="2" branch="false"/>
-								<line number="58" hits="2" branch="false"/>
+								<line number="57" hits="4" branch="false"/>
+								<line number="58" hits="4" branch="false"/>
 							</lines>
 						</method>
 						<method name="stop" signature="()V" line-rate="1.0" branch-rate="1.0">
 							<lines>
-								<line number="66" hits="2" branch="false"/>
-								<line number="67" hits="2" branch="false"/>
-								<line number="68" hits="2" branch="false"/>
+								<line number="66" hits="4" branch="false"/>
+								<line number="67" hits="4" branch="false"/>
+								<line number="68" hits="4" branch="false"/>
 							</lines>
 						</method>
 					</methods>
 					<lines>
-						<line number="10" hits="1" branch="false"/>
-						<line number="11" hits="1" branch="false"/>
-						<line number="39" hits="2" branch="false"/>
-						<line number="41" hits="2" branch="false"/>
-						<line number="42" hits="2" branch="false"/>
-						<line number="43" hits="2" branch="false"/>
-						<line number="44" hits="2" branch="false"/>
-						<line number="46" hits="2" branch="false"/>
-						<line number="49" hits="2" branch="false"/>
-						<line number="53" hits="2" branch="false"/>
-						<line number="54" hits="2" branch="false"/>
+						<line number="10" hits="2" branch="false"/>
+						<line number="11" hits="2" branch="false"/>
+						<line number="39" hits="4" branch="false"/>
+						<line number="41" hits="4" branch="false"/>
+						<line number="42" hits="4" branch="false"/>
+						<line number="43" hits="4" branch="false"/>
+						<line number="44" hits="4" branch="false"/>
+						<line number="46" hits="4" branch="false"/>
+						<line number="49" hits="4" branch="false"/>
+						<line number="53" hits="4" branch="false"/>
+						<line number="54" hits="4" branch="false"/>
 						<line number="55" hits="0" branch="false"/>
 						<line number="56" hits="0" branch="false"/>
-						<line number="57" hits="2" branch="false"/>
-						<line number="58" hits="2" branch="false"/>
-						<line number="61" hits="8" branch="false"/>
-						<line number="66" hits="2" branch="false"/>
-						<line number="67" hits="2" branch="false"/>
-						<line number="68" hits="2" branch="false"/>
+						<line number="57" hits="4" branch="false"/>
+						<line number="58" hits="4" branch="false"/>
+						<line number="61" hits="16" branch="false"/>
+						<line number="66" hits="4" branch="false"/>
+						<line number="67" hits="4" branch="false"/>
+						<line number="68" hits="4" branch="false"/>
 					</lines>
 				</class>
 				<class name="com.github.jcooky.mina.thrift.TMinaServer$Args" filename="com/github/jcooky/mina/thrift/TMinaServer.java" line-rate="0.3333333333333333" branch-rate="1.0" complexity="1.25">
 					<methods>
 						<method name="&lt;init&gt;" signature="(Lorg/apache/thrift/transport/TServerTransport;)V" line-rate="1.0" branch-rate="1.0">
 							<lines>
-								<line number="14" hits="2" branch="false"/>
-								<line number="17" hits="2" branch="false"/>
-								<line number="18" hits="2" branch="false"/>
+								<line number="14" hits="4" branch="false"/>
+								<line number="17" hits="4" branch="false"/>
+								<line number="18" hits="4" branch="false"/>
 							</lines>
 						</method>
 						<method name="idleTime" signature="(I)Lcom/github/jcooky/mina/thrift/TMinaServer$Args;" line-rate="0.0" branch-rate="1.0">
@@ -286,9 +286,9 @@
 						</method>
 					</methods>
 					<lines>
-						<line number="14" hits="2" branch="false"/>
-						<line number="17" hits="2" branch="false"/>
-						<line number="18" hits="2" branch="false"/>
+						<line number="14" hits="4" branch="false"/>
+						<line number="17" hits="4" branch="false"/>
+						<line number="18" hits="4" branch="false"/>
 						<line number="21" hits="0" branch="false"/>
 						<line number="22" hits="0" branch="false"/>
 						<line number="26" hits="0" branch="false"/>
@@ -301,18 +301,18 @@
 					<methods>
 						<method name="&lt;clinit&gt;" signature="()V" line-rate="1.0" branch-rate="1.0">
 							<lines>
-								<line number="16" hits="1" branch="false"/>
+								<line number="16" hits="2" branch="false"/>
 							</lines>
 						</method>
 						<method name="&lt;init&gt;" signature="(Lorg/apache/thrift/TProcessorFactory;Lorg/apache/thrift/transport/TTransportFactory;Lorg/apache/thrift/transport/TTransportFactory;Lorg/apache/thrift/protocol/TProtocolFactory;Lorg/apache/thrift/protocol/TProtocolFactory;)V" line-rate="1.0" branch-rate="1.0">
 							<lines>
-								<line number="24" hits="2" branch="false"/>
-								<line number="25" hits="2" branch="false"/>
-								<line number="26" hits="2" branch="false"/>
-								<line number="27" hits="2" branch="false"/>
-								<line number="28" hits="2" branch="false"/>
-								<line number="29" hits="2" branch="false"/>
-								<line number="30" hits="2" branch="false"/>
+								<line number="24" hits="4" branch="false"/>
+								<line number="25" hits="4" branch="false"/>
+								<line number="26" hits="4" branch="false"/>
+								<line number="27" hits="4" branch="false"/>
+								<line number="28" hits="4" branch="false"/>
+								<line number="29" hits="4" branch="false"/>
+								<line number="30" hits="4" branch="false"/>
 							</lines>
 						</method>
 						<method name="exceptionCaught" signature="(Lorg/apache/mina/core/session/IoSession;Ljava/lang/Throwable;)V" line-rate="0.0" branch-rate="1.0">
@@ -323,37 +323,37 @@
 						</method>
 						<method name="messageReceived" signature="(Lorg/apache/mina/core/session/IoSession;Ljava/lang/Object;)V" line-rate="0.9166666666666666" branch-rate="0.5">
 							<lines>
-								<line number="54" hits="3" branch="false"/>
-								<line number="56" hits="3" branch="false"/>
-								<line number="58" hits="3" branch="false"/>
-								<line number="60" hits="3" branch="true" condition-coverage="50% (1/2)">
+								<line number="54" hits="6" branch="false"/>
+								<line number="56" hits="6" branch="false"/>
+								<line number="58" hits="6" branch="false"/>
+								<line number="60" hits="6" branch="true" condition-coverage="50% (1/2)">
 									<conditions>
 										<condition number="0" type="jump" coverage="50%"/>
 									</conditions>
 								</line>
-								<line number="61" hits="3" branch="false"/>
-								<line number="62" hits="3" branch="false"/>
-								<line number="64" hits="3" branch="false"/>
-								<line number="66" hits="3" branch="false"/>
+								<line number="61" hits="6" branch="false"/>
+								<line number="62" hits="6" branch="false"/>
+								<line number="64" hits="6" branch="false"/>
+								<line number="66" hits="6" branch="false"/>
 								<line number="67" hits="0" branch="false"/>
-								<line number="70" hits="3" branch="false"/>
-								<line number="71" hits="3" branch="false"/>
-								<line number="72" hits="3" branch="false"/>
+								<line number="70" hits="6" branch="false"/>
+								<line number="71" hits="6" branch="false"/>
+								<line number="72" hits="6" branch="false"/>
 							</lines>
 						</method>
 						<method name="messageSent" signature="(Lorg/apache/mina/core/session/IoSession;Ljava/lang/Object;)V" line-rate="1.0" branch-rate="1.0">
 							<lines>
-								<line number="75" hits="26" branch="false"/>
+								<line number="75" hits="52" branch="false"/>
 							</lines>
 						</method>
 						<method name="sessionClosed" signature="(Lorg/apache/mina/core/session/IoSession;)V" line-rate="1.0" branch-rate="1.0">
 							<lines>
-								<line number="44" hits="2" branch="false"/>
+								<line number="44" hits="4" branch="false"/>
 							</lines>
 						</method>
 						<method name="sessionCreated" signature="(Lorg/apache/mina/core/session/IoSession;)V" line-rate="1.0" branch-rate="1.0">
 							<lines>
-								<line number="34" hits="2" branch="false"/>
+								<line number="34" hits="4" branch="false"/>
 							</lines>
 						</method>
 						<method name="sessionIdle" signature="(Lorg/apache/mina/core/session/IoSession;Lorg/apache/mina/core/session/IdleStatus;)V" line-rate="0.0" branch-rate="1.0">
@@ -363,48 +363,48 @@
 						</method>
 						<method name="sessionOpened" signature="(Lorg/apache/mina/core/session/IoSession;)V" line-rate="1.0" branch-rate="1.0">
 							<lines>
-								<line number="37" hits="2" branch="false"/>
-								<line number="39" hits="2" branch="false"/>
-								<line number="40" hits="2" branch="false"/>
-								<line number="41" hits="2" branch="false"/>
+								<line number="37" hits="4" branch="false"/>
+								<line number="39" hits="4" branch="false"/>
+								<line number="40" hits="4" branch="false"/>
+								<line number="41" hits="4" branch="false"/>
 							</lines>
 						</method>
 					</methods>
 					<lines>
-						<line number="16" hits="1" branch="false"/>
-						<line number="24" hits="2" branch="false"/>
-						<line number="25" hits="2" branch="false"/>
-						<line number="26" hits="2" branch="false"/>
-						<line number="27" hits="2" branch="false"/>
-						<line number="28" hits="2" branch="false"/>
-						<line number="29" hits="2" branch="false"/>
-						<line number="30" hits="2" branch="false"/>
-						<line number="34" hits="2" branch="false"/>
-						<line number="37" hits="2" branch="false"/>
-						<line number="39" hits="2" branch="false"/>
-						<line number="40" hits="2" branch="false"/>
-						<line number="41" hits="2" branch="false"/>
-						<line number="44" hits="2" branch="false"/>
+						<line number="16" hits="2" branch="false"/>
+						<line number="24" hits="4" branch="false"/>
+						<line number="25" hits="4" branch="false"/>
+						<line number="26" hits="4" branch="false"/>
+						<line number="27" hits="4" branch="false"/>
+						<line number="28" hits="4" branch="false"/>
+						<line number="29" hits="4" branch="false"/>
+						<line number="30" hits="4" branch="false"/>
+						<line number="34" hits="4" branch="false"/>
+						<line number="37" hits="4" branch="false"/>
+						<line number="39" hits="4" branch="false"/>
+						<line number="40" hits="4" branch="false"/>
+						<line number="41" hits="4" branch="false"/>
+						<line number="44" hits="4" branch="false"/>
 						<line number="47" hits="0" branch="false"/>
 						<line number="50" hits="0" branch="false"/>
 						<line number="51" hits="0" branch="false"/>
-						<line number="54" hits="3" branch="false"/>
-						<line number="56" hits="3" branch="false"/>
-						<line number="58" hits="3" branch="false"/>
-						<line number="60" hits="3" branch="true" condition-coverage="50% (1/2)">
+						<line number="54" hits="6" branch="false"/>
+						<line number="56" hits="6" branch="false"/>
+						<line number="58" hits="6" branch="false"/>
+						<line number="60" hits="6" branch="true" condition-coverage="50% (1/2)">
 							<conditions>
 								<condition number="0" type="jump" coverage="50%"/>
 							</conditions>
 						</line>
-						<line number="61" hits="3" branch="false"/>
-						<line number="62" hits="3" branch="false"/>
-						<line number="64" hits="3" branch="false"/>
-						<line number="66" hits="3" branch="false"/>
+						<line number="61" hits="6" branch="false"/>
+						<line number="62" hits="6" branch="false"/>
+						<line number="64" hits="6" branch="false"/>
+						<line number="66" hits="6" branch="false"/>
 						<line number="67" hits="0" branch="false"/>
-						<line number="70" hits="3" branch="false"/>
-						<line number="71" hits="3" branch="false"/>
-						<line number="72" hits="3" branch="false"/>
-						<line number="75" hits="26" branch="false"/>
+						<line number="70" hits="6" branch="false"/>
+						<line number="71" hits="6" branch="false"/>
+						<line number="72" hits="6" branch="false"/>
+						<line number="75" hits="52" branch="false"/>
 					</lines>
 				</class>
 			</classes>
@@ -415,35 +415,35 @@
 					<methods>
 						<method name="&lt;init&gt;" signature="()V" line-rate="1.0" branch-rate="1.0">
 							<lines>
-								<line number="15" hits="2" branch="false"/>
-								<line number="17" hits="2" branch="false"/>
-								<line number="18" hits="2" branch="false"/>
-								<line number="19" hits="2" branch="false"/>
+								<line number="15" hits="4" branch="false"/>
+								<line number="17" hits="4" branch="false"/>
+								<line number="18" hits="4" branch="false"/>
+								<line number="19" hits="4" branch="false"/>
 							</lines>
 						</method>
 					</methods>
 					<lines>
-						<line number="15" hits="2" branch="false"/>
-						<line number="17" hits="2" branch="false"/>
-						<line number="18" hits="2" branch="false"/>
-						<line number="19" hits="2" branch="false"/>
+						<line number="15" hits="4" branch="false"/>
+						<line number="17" hits="4" branch="false"/>
+						<line number="18" hits="4" branch="false"/>
+						<line number="19" hits="4" branch="false"/>
 					</lines>
 				</class>
 				<class name="com.github.jcooky.mina.thrift.codec.TFrameProtocolDecoder" filename="com/github/jcooky/mina/thrift/codec/TFrameProtocolDecoder.java" line-rate="0.8181818181818182" branch-rate="0.5" complexity="3.6666666666666665">
 					<methods>
 						<method name="&lt;clinit&gt;" signature="()V" line-rate="1.0" branch-rate="1.0">
 							<lines>
-								<line number="21" hits="1" branch="false"/>
+								<line number="21" hits="2" branch="false"/>
 							</lines>
 						</method>
 						<method name="&lt;init&gt;" signature="()V" line-rate="1.0" branch-rate="1.0">
 							<lines>
-								<line number="20" hits="2" branch="false"/>
+								<line number="20" hits="4" branch="false"/>
 							</lines>
 						</method>
 						<method name="decodable" signature="(Lorg/apache/mina/core/session/IoSession;Lorg/apache/mina/core/buffer/IoBuffer;)Lorg/apache/mina/filter/codec/demux/MessageDecoderResult;" line-rate="0.625" branch-rate="0.5">
 							<lines>
-								<line number="24" hits="3" branch="true" condition-coverage="50% (3/6)">
+								<line number="24" hits="6" branch="true" condition-coverage="50% (3/6)">
 									<conditions>
 										<condition number="0" type="jump" coverage="50%"/>
 										<condition number="1" type="jump" coverage="50%"/>
@@ -451,35 +451,35 @@
 									</conditions>
 								</line>
 								<line number="25" hits="0" branch="false"/>
-								<line number="26" hits="3" branch="true" condition-coverage="50% (1/2)">
+								<line number="26" hits="6" branch="true" condition-coverage="50% (1/2)">
 									<conditions>
 										<condition number="0" type="jump" coverage="50%"/>
 									</conditions>
 								</line>
-								<line number="27" hits="3" branch="false"/>
-								<line number="28" hits="3" branch="true" condition-coverage="50% (1/2)">
+								<line number="27" hits="6" branch="false"/>
+								<line number="28" hits="6" branch="true" condition-coverage="50% (1/2)">
 									<conditions>
 										<condition number="0" type="jump" coverage="50%"/>
 									</conditions>
 								</line>
-								<line number="29" hits="3" branch="false"/>
+								<line number="29" hits="6" branch="false"/>
 								<line number="31" hits="0" branch="false"/>
 								<line number="35" hits="0" branch="false"/>
 							</lines>
 						</method>
 						<method name="decode" signature="(Lorg/apache/mina/core/session/IoSession;Lorg/apache/mina/core/buffer/IoBuffer;Lorg/apache/mina/filter/codec/ProtocolDecoderOutput;)Lorg/apache/mina/filter/codec/demux/MessageDecoderResult;" line-rate="1.0" branch-rate="1.0">
 							<lines>
-								<line number="40" hits="3" branch="false"/>
-								<line number="41" hits="3" branch="false"/>
-								<line number="42" hits="3" branch="false"/>
-								<line number="43" hits="3" branch="false"/>
-								<line number="44" hits="3" branch="false"/>
-								<line number="45" hits="3" branch="false"/>
-								<line number="46" hits="3" branch="false"/>
-								<line number="47" hits="3" branch="false"/>
-								<line number="49" hits="3" branch="false"/>
-								<line number="50" hits="3" branch="false"/>
-								<line number="52" hits="3" branch="false"/>
+								<line number="40" hits="6" branch="false"/>
+								<line number="41" hits="6" branch="false"/>
+								<line number="42" hits="6" branch="false"/>
+								<line number="43" hits="6" branch="false"/>
+								<line number="44" hits="6" branch="false"/>
+								<line number="45" hits="6" branch="false"/>
+								<line number="46" hits="6" branch="false"/>
+								<line number="47" hits="6" branch="false"/>
+								<line number="49" hits="6" branch="false"/>
+								<line number="50" hits="6" branch="false"/>
+								<line number="52" hits="6" branch="false"/>
 							</lines>
 						</method>
 						<method name="finishDecode" signature="(Lorg/apache/mina/core/session/IoSession;Lorg/apache/mina/filter/codec/ProtocolDecoderOutput;)V" line-rate="0.0" branch-rate="1.0">
@@ -489,9 +489,9 @@
 						</method>
 					</methods>
 					<lines>
-						<line number="20" hits="2" branch="false"/>
-						<line number="21" hits="1" branch="false"/>
-						<line number="24" hits="3" branch="true" condition-coverage="50% (3/6)">
+						<line number="20" hits="4" branch="false"/>
+						<line number="21" hits="2" branch="false"/>
+						<line number="24" hits="6" branch="true" condition-coverage="50% (3/6)">
 							<conditions>
 								<condition number="0" type="jump" coverage="50%"/>
 								<condition number="1" type="jump" coverage="50%"/>
@@ -499,31 +499,31 @@
 							</conditions>
 						</line>
 						<line number="25" hits="0" branch="false"/>
-						<line number="26" hits="3" branch="true" condition-coverage="50% (1/2)">
+						<line number="26" hits="6" branch="true" condition-coverage="50% (1/2)">
 							<conditions>
 								<condition number="0" type="jump" coverage="50%"/>
 							</conditions>
 						</line>
-						<line number="27" hits="3" branch="false"/>
-						<line number="28" hits="3" branch="true" condition-coverage="50% (1/2)">
+						<line number="27" hits="6" branch="false"/>
+						<line number="28" hits="6" branch="true" condition-coverage="50% (1/2)">
 							<conditions>
 								<condition number="0" type="jump" coverage="50%"/>
 							</conditions>
 						</line>
-						<line number="29" hits="3" branch="false"/>
+						<line number="29" hits="6" branch="false"/>
 						<line number="31" hits="0" branch="false"/>
 						<line number="35" hits="0" branch="false"/>
-						<line number="40" hits="3" branch="false"/>
-						<line number="41" hits="3" branch="false"/>
-						<line number="42" hits="3" branch="false"/>
-						<line number="43" hits="3" branch="false"/>
-						<line number="44" hits="3" branch="false"/>
-						<line number="45" hits="3" branch="false"/>
-						<line number="46" hits="3" branch="false"/>
-						<line number="47" hits="3" branch="false"/>
-						<line number="49" hits="3" branch="false"/>
-						<line number="50" hits="3" branch="false"/>
-						<line number="52" hits="3" branch="false"/>
+						<line number="40" hits="6" branch="false"/>
+						<line number="41" hits="6" branch="false"/>
+						<line number="42" hits="6" branch="false"/>
+						<line number="43" hits="6" branch="false"/>
+						<line number="44" hits="6" branch="false"/>
+						<line number="45" hits="6" branch="false"/>
+						<line number="46" hits="6" branch="false"/>
+						<line number="47" hits="6" branch="false"/>
+						<line number="49" hits="6" branch="false"/>
+						<line number="50" hits="6" branch="false"/>
+						<line number="52" hits="6" branch="false"/>
 						<line number="57" hits="0" branch="false"/>
 					</lines>
 				</class>
@@ -535,28 +535,28 @@
 						</method>
 						<method name="encode" signature="(Lorg/apache/mina/core/session/IoSession;Lcom/github/jcooky/mina/thrift/message/TMessage;Lorg/apache/mina/filter/codec/ProtocolEncoderOutput;)V" line-rate="1.0" branch-rate="1.0">
 							<lines>
-								<line number="19" hits="26" branch="false"/>
-								<line number="22" hits="26" branch="false"/>
-								<line number="23" hits="26" branch="false"/>
-								<line number="25" hits="26" branch="false"/>
-								<line number="26" hits="26" branch="false"/>
-								<line number="27" hits="26" branch="false"/>
+								<line number="19" hits="52" branch="false"/>
+								<line number="22" hits="52" branch="false"/>
+								<line number="23" hits="52" branch="false"/>
+								<line number="25" hits="52" branch="false"/>
+								<line number="26" hits="52" branch="false"/>
+								<line number="27" hits="52" branch="false"/>
 							</lines>
 						</method>
 						<method name="encode" signature="(Lorg/apache/mina/core/session/IoSession;Ljava/lang/Object;Lorg/apache/mina/filter/codec/ProtocolEncoderOutput;)V" line-rate="1.0" branch-rate="1.0">
 							<lines>
-								<line number="16" hits="28" branch="false"/>
+								<line number="16" hits="56" branch="false"/>
 							</lines>
 						</method>
 					</methods>
 					<lines>
-						<line number="16" hits="28" branch="false"/>
-						<line number="19" hits="26" branch="false"/>
-						<line number="22" hits="26" branch="false"/>
-						<line number="23" hits="26" branch="false"/>
-						<line number="25" hits="26" branch="false"/>
-						<line number="26" hits="26" branch="false"/>
-						<line number="27" hits="26" branch="false"/>
+						<line number="16" hits="56" branch="false"/>
+						<line number="19" hits="52" branch="false"/>
+						<line number="22" hits="52" branch="false"/>
+						<line number="23" hits="52" branch="false"/>
+						<line number="25" hits="52" branch="false"/>
+						<line number="26" hits="52" branch="false"/>
+						<line number="27" hits="52" branch="false"/>
 					</lines>
 				</class>
 			</classes>
@@ -567,30 +567,30 @@
 					<methods>
 						<method name="&lt;init&gt;" signature="(ILorg/apache/mina/core/buffer/IoBuffer;)V" line-rate="1.0" branch-rate="1.0">
 							<lines>
-								<line number="17" hits="29" branch="false"/>
-								<line number="18" hits="29" branch="false"/>
-								<line number="19" hits="29" branch="false"/>
-								<line number="20" hits="29" branch="false"/>
+								<line number="17" hits="58" branch="false"/>
+								<line number="18" hits="58" branch="false"/>
+								<line number="19" hits="58" branch="false"/>
+								<line number="20" hits="58" branch="false"/>
 							</lines>
 						</method>
 						<method name="getFrame" signature="()Lorg/apache/mina/core/buffer/IoBuffer;" line-rate="1.0" branch-rate="1.0">
 							<lines>
-								<line number="27" hits="50" branch="false"/>
+								<line number="27" hits="100" branch="false"/>
 							</lines>
 						</method>
 						<method name="getFrameSize" signature="()I" line-rate="1.0" branch-rate="1.0">
 							<lines>
-								<line number="23" hits="52" branch="false"/>
+								<line number="23" hits="104" branch="false"/>
 							</lines>
 						</method>
 					</methods>
 					<lines>
-						<line number="17" hits="29" branch="false"/>
-						<line number="18" hits="29" branch="false"/>
-						<line number="19" hits="29" branch="false"/>
-						<line number="20" hits="29" branch="false"/>
-						<line number="23" hits="52" branch="false"/>
-						<line number="27" hits="50" branch="false"/>
+						<line number="17" hits="58" branch="false"/>
+						<line number="18" hits="58" branch="false"/>
+						<line number="19" hits="58" branch="false"/>
+						<line number="20" hits="58" branch="false"/>
+						<line number="23" hits="104" branch="false"/>
+						<line number="27" hits="100" branch="false"/>
 					</lines>
 				</class>
 			</classes>
