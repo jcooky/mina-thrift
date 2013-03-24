@@ -4,7 +4,7 @@
 
 	<groupId>com.github.jcooky.mina.thrift</groupId>
 	<artifactId>mina-thrift</artifactId>
-	<version>0.0.3</version>
+	<version>0.0.4b</version>
 	<packaging>jar</packaging>
 
 	<name>mina-thrift</name>
@@ -46,7 +46,6 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.build.source>1.6</project.build.source>
 		<project.build.target>1.6</project.build.target>
-		<!-- github server corresponds to entry in ~/.m2/settings.xml -->
 		<github.global.server>github</github.global.server>
 	</properties>
 
@@ -130,6 +129,7 @@
 
 
 	<build>
+		<defaultGoal>install</defaultGoal>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -147,7 +147,6 @@
 				<executions>
 					<execution>
 						<id>thrift-generate-sources</id>
-						<phase>thrift-generate-sources</phase>
 						<goals>
 							<goal>run</goal>
 						</goals>
