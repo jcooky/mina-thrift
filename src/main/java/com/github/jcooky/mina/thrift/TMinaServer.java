@@ -11,10 +11,27 @@ public class TMinaServer extends TServer {
 	public static final AttributeKey MESSAGE = new AttributeKey(TMinaServer.class, "buffer");
 	
 	public static class Args extends AbstractServerArgs<Args> {
-		int readBufferSize = 2048, writeTimout = 10 * 1000, idleTime = 10;
+		int readBufferSize = 2048;
+		int writeTimout = 60;
+		int writeIdleTime;
+		int readIdleTime;
+		int maxReadBufferSize = 65536;
+		int minReadBufferSize = 64;
+		int throughputCalculationInterval = 3;
+		boolean useReadOperation;
 
 		public Args(TServerTransport arg0) {
 			super(arg0);
+		}
+
+		public Args minReadBufferSize(int minReadBufferSize) {
+			this.minReadBufferSize = minReadBufferSize;
+			return this;
+		}
+
+		public Args maxReadBufferSize(int maxReadBufferSize) {
+			this.maxReadBufferSize = maxReadBufferSize;
+			return this;
 		}
 
 		public Args readBufferSize(int readBufferSize) {
@@ -27,8 +44,29 @@ public class TMinaServer extends TServer {
 			return this;
 		}
 
-		public Args idleTime(int idleTime) {
-			this.idleTime = idleTime;
+		public Args writeIdleTime(int writeIdleTime) {
+			this.writeIdleTime = writeIdleTime;
+			return this;
+		}
+
+		public Args readIdleTime(int readIdleTime) {
+			this.readIdleTime = readIdleTime;
+			return this;
+		}
+
+		public Args bothIdleTime(int bothIdleTime) {
+			this.readIdleTime = bothIdleTime;
+			this.writeIdleTime = bothIdleTime;
+			return this;
+		}
+
+		public Args throughputCalculationInterval(int throughputCalculationInterval) {
+			this.throughputCalculationInterval = throughputCalculationInterval;
+			return this;
+		}
+
+		public Args useReadOperation(boolean useReadOperation) {
+			this.useReadOperation = useReadOperation;
 			return this;
 		}
 	}
@@ -39,9 +77,14 @@ public class TMinaServer extends TServer {
 		super(args);
 
 		IoSessionConfig config = getTransport().getAcceptor().getSessionConfig();
+		config.setMinReadBufferSize(args.minReadBufferSize);
+		config.setMaxReadBufferSize(args.maxReadBufferSize);
 		config.setReadBufferSize(args.readBufferSize);
-		config.setBothIdleTime(args.idleTime);
+		config.setWriterIdleTime(args.readIdleTime);
+		config.setReaderIdleTime(args.writeIdleTime);
 		config.setWriteTimeout(args.writeTimout);
+		config.setThroughputCalculationInterval(args.throughputCalculationInterval);
+		config.setUseReadOperation(args.useReadOperation);
 
 		handler = new TMinaThriftHandler(super.processorFactory_, super.inputTransportFactory_,
 				super.outputTransportFactory_, super.inputProtocolFactory_,
@@ -64,6 +107,5 @@ public class TMinaServer extends TServer {
 	@Override
 	public void stop() {
 		super.stop();
-		getTransport().close();
 	}
 }

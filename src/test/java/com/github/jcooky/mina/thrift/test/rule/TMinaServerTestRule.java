@@ -1,24 +1,19 @@
 package com.github.jcooky.mina.thrift.test.rule;
 
-import java.net.InetSocketAddress;
-
+import com.github.jcooky.mina.thrift.TIoAcceptorServerTransport;
+import com.github.jcooky.mina.thrift.TMinaServer;
+import com.github.jcooky.mina.thrift.codec.TFrameProtocolCodecFactory;
 import org.apache.mina.filter.codec.ProtocolCodecFilter;
 import org.apache.mina.transport.socket.nio.NioSocketAcceptor;
 import org.apache.thrift.TProcessor;
 import org.apache.thrift.protocol.TCompactProtocol;
 import org.apache.thrift.protocol.TProtocol;
 import org.apache.thrift.server.TServer;
-import org.apache.thrift.transport.TFramedTransport;
-import org.apache.thrift.transport.TServerTransport;
-import org.apache.thrift.transport.TSocket;
-import org.apache.thrift.transport.TTransport;
-import org.apache.thrift.transport.TTransportFactory;
+import org.apache.thrift.transport.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.github.jcooky.mina.thrift.TIoAcceptorServerTransport;
-import com.github.jcooky.mina.thrift.TMinaServer;
-import com.github.jcooky.mina.thrift.codec.TFrameProtocolCodecFactory;
+import java.net.InetSocketAddress;
 
 public class TMinaServerTestRule {
 	private Logger logger = LoggerFactory.getLogger(getClass());
@@ -28,6 +23,7 @@ public class TMinaServerTestRule {
 	private TProcessor processor;
 
 	private TServer server;
+	private TServerTransport serverTransport;
 	private TTransport clientSocket;
 	private TProtocol clientProtocol;
 
@@ -50,8 +46,11 @@ public class TMinaServerTestRule {
 
 		acceptor.getFilterChain().addLast(TIoAcceptorServerTransport.CODEC_NAME, new ProtocolCodecFilter(new TFrameProtocolCodecFactory()));
 
-		server = new TMinaServer(new TMinaServer.Args(new TIoAcceptorServerTransport(acceptor)).processor(processor)
-				.protocolFactory(new TCompactProtocol.Factory()).transportFactory(new TTransportFactory()));
+		serverTransport = new TIoAcceptorServerTransport(acceptor);
+		server = new TMinaServer(new TMinaServer.Args(serverTransport)
+											.processor(processor)
+											.protocolFactory(new TCompactProtocol.Factory())
+											.transportFactory(new TTransportFactory()));
 
 		server.serve();
 
@@ -64,6 +63,7 @@ public class TMinaServerTestRule {
 	public void tearDown() throws Exception {
 		clientSocket.close();
 		server.stop();
+		serverTransport.close();
 	}
 
 }
